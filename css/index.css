@@ -1,13 +1,41 @@
-body {
-    --custom-color: #f0addd; /* Define the custom color variable here */
-  }
-  
-  .poppins-semibold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
+
+  .lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
     font-style: normal;
   }
-  
-  .navbar-custom {
-    background-color: var(--custom-color); /* Use the custom color variable here */
+
+  .lato-regular-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .lato-bold {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .lato-bold-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  .btn-customcolor {
+    background-color: #b97ce4d0; /* Example custom color */
+  }
+
+  .navbar-customcolor {
+    background-color: #c59de2d0; /* Example custom color */
+  }
+
+  .card-section {
+    margin-top: 20px; /* Adjust as needed */
+    margin-bottom: 30px; /* Adjust as needed */
+}
+
+  .card-body p.card-text {
+    font-size: 12px; /* Adjust as needed */
   }
