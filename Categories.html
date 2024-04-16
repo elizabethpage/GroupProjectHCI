@@ -106,10 +106,10 @@
               <button class="nav-link" id="chickflick-tab" data-bs-toggle="tab" data-bs-target="#chickflick-tab-pane" type="button" role="tab" aria-controls="chickflick-tab" aria-selected="false">Chick Flicks</button>
             </li>
             <li class="nav-item" role="presentation">
-              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+              <button class="nav-link" id="classics-tab" data-bs-toggle="tab" data-bs-target="#classics-tab-pane" type="button" role="tab" aria-controls="classics-tab-pane" aria-selected="false">Classics</button>
             </li>
             <li class="nav-item" role="presentation">
-              <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
+              <button class="nav-link" id="spooky-tab" data-bs-toggle="tab" data-bs-target="#spooky-tab-pane" type="button" role="tab" aria-controls="spooky-tab-pane" aria-selected="false">Scary Movies</button>
             </li>
           </ul>
           <div class="tab-content" id="myTabContent">
@@ -192,8 +192,85 @@
                     </div>
                   </div>
             </div>
-            <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">hi</div>
-            <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+
+            <!-- Classics filter -->
+            <div class="tab-pane fade" id="classics-tab-pane" role="tabpanel" aria-labelledby="classics-tab" tabindex="0">
+                
+                <div class="row">
+                    <div class="col-md-12">
+                      <h3 class="card-title mb-3">Classics</h3>
+                    </div>
+                    <div class = "col-md-4">
+                      <div class="card" style="width: 15rem;">
+                        <img src="assets/godfather.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">The Godfather</h5>
+                          <p class="card-text">An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.</p>
+                          <a href="#" class="btn btn-primary">Add to Watchlist</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "col-md-4">
+                      <div class="card" style="width: 15rem;">
+                        <img src="assets/breakfastclub.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">The Breakfast Club</h5>
+                          <p class="card-text">Five high school students meet in Saturday detention and discover how they have a lot more in common than they thought.</p>
+                          <a href="#" class="btn btn-primary">Add to Watchlist</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "col-md-4">
+                      <div class="card" style="width: 15rem;">
+                        <img src="assets/titanic.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Titanic</h5>
+                          <p class="card-text">A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.</p>
+                          <a href="#" class="btn btn-primary">Add to Watchlist</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+            <!-- Scary Movies filter -->
+            <div class="tab-pane fade" id="spooky-tab-pane" role="tabpanel" aria-labelledby="spooky-tab" tabindex="0">
+                <div class="row">
+                    <div class="col-md-12">
+                      <h3 class="card-title mb-3">Classics</h3>
+                    </div>
+                    <div class = "col-md-4">
+                      <div class="card" style="width: 15rem;">
+                        <img src="assets/exorcist.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">The Exorcist</h5>
+                          <p class="card-text">When a 12-year-old girl is possessed by a mysterious entity, her mother seeks the help of two priests to save her.</p>
+                          <a href="#" class="btn btn-primary">Add to Watchlist</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "col-md-4">
+                      <div class="card" style="width: 15rem;">
+                        <img src="assets/nightofthelivingdead.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Night of the Living Dead</h5>
+                          <p class="card-text">A ragtag group of Pennsylvanians barricade themselves in an old farmhouse to remain safe from a horde of flesh-eating ghouls that are ravaging the East Coast of the United States.</p>
+                          <a href="#" class="btn btn-primary">Add to Watchlist</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "col-md-4">
+                      <div class="card" style="width: 15rem;">
+                        <img src="assets/getout.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Get Out</h5>
+                          <p class="card-text">A young African-American visits his white girlfriend's parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.</p>
+                          <a href="#" class="btn btn-primary">Add to Watchlist</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
           </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
