@@ -1,29 +1,13 @@
-
-.img-wrapper{
-    max-width: 100%;
-    height: 13em;
-}
-img{
-    max-width: 100%;
-    max-height: 100%;
-}
-
-@media screen and (min-width:576px) {
-    .carousel-inner{
-        display: flex;
-    }
-    .carousel-item{
-        display: block;
-        margin-right: 0;
-        flex: 0 0 calc(100%/3);
-    }
-    .img-wrapper{
-        height: 23vw;
-    }
-}
-.carousel-inner{
-    padding: 1em;
-}
-.card{
-    margin: 0 .5em;
-}
+body {
+    --custom-color: #f0addd; /* Define the custom color variable here */
+  }
+  
+  .poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .navbar-custom {
+    background-color: var(--custom-color); /* Use the custom color variable here */
+  }
