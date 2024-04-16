@@ -15,6 +15,44 @@
 </head>
 
 <body>
+    <script>
+        // define an object to store csv data by column
+        var csvData = {};
+
+        //load the csv file
+        fetch('imdb_top_1000.csv')
+            .then(response => response.text())
+            .then(data => {
+                
+                //parse csv data
+                var rows = data.split('/n');
+                var headers = rows[0].split(',');
+
+                //initialize the object with empty arrays for each column
+                headers.forEach(row => {
+                    var values = row.split(',');
+                    headers.forEach((header, index) => {
+                        csvData[header].push(values[index]);
+                    });
+                });
+
+                //now you can access specific data by column name
+                console.log(csvData);
+            })
+            .catch(error => console.error('Error loading CSV file', error));
+
+            var titlesAfter2000 = [];
+            var yearColumn = csvData['Released_Year'];
+            var titleColumn = csvData['Series_Title'];
+
+            for (var i = 0; i < yearColumn.length; i++) {
+                if (parseInt(yearColumn[i]) >= 2000) {
+                    titlesAfter2000.push(titleColumn[i]);
+                }
+            }
+
+
+    </script>
     <div class="container">
         <!-- Title -->
         <div class="row">
@@ -58,3 +96,106 @@
                 </nav>
             </div>
         </div>
+
+        <!-- Tab bar-->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="Y2K-tab" data-bs-toggle="tab" data-bs-target="#Y2K-tab-pane" type="button" role="tab" aria-controls="Y2K-tab-pane" aria-selected="true">Y2K</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="chickflick-tab" data-bs-toggle="tab" data-bs-target="#chickflick-tab-pane" type="button" role="tab" aria-controls="chickflick-tab" aria-selected="false">Chick Flicks</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            
+            <!-- Y2K filter-->
+            <div class="tab-pane fade show active" id="Y2K-tab-pane" role="tabpanel" aria-labelledby="Y2K-tab" tabindex="0">
+
+                <div class="row">
+                    <div class="col-md-12">
+                      <h3 class="card-title mb-3">Y2K Movies</h3>
+                    </div>
+                    <div class = "col-md-4">
+                      <div class="card" style="width: 15rem;">
+                        <img src="assets/gladiator.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Gladiator</h5>
+                          <p class="card-text">A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.</p>
+                          <a href="#" class="btn btn-primary">Add to Watchlist</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "col-md-4">
+                      <div class="card" style="width: 15rem;">
+                        <img src="assets/dancerinthedark.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Dancer in the Dark</h5>
+                          <p class="card-text">An East European girl travels to the United States with her young son, expecting it to be like a Hollywood film.</p>
+                          <a href="#" class="btn btn-primary">Add to Watchlist</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "col-md-4">
+                      <div class="card" style="width: 15rem;">
+                        <img src="assets/rememberthetitans.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Remember the Titans</h5>
+                          <p class="card-text">The true story of a newly appointed African-American coach and his high school team on their first season as a racially integrated unit.</p>
+                          <a href="#" class="btn btn-primary">Add to Watchlist</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+            <!-- Chick Flicks filter -->
+            <div class="tab-pane fade" id="chickflick-tab-pane" role="tabpanel" aria-labelledby="chickflick-tab" tabindex="0">
+                <div class="row">
+                    <div class="col-md-12">
+                      <h3 class="card-title mb-3">Chick Flicks</h3>
+                    </div>
+                    <div class = "col-md-4">
+                      <div class="card" style="width: 15rem;">
+                        <img src="assets/brokencircle.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">The Broken Circle Breakdown</h5>
+                          <p class="card-text">Elise and Didier fall in love at first sight, in spite of their differences. He talks, she listens. He's a romantic atheist, she's a religious realist. When their daughter becomes seriously ill, their love is put on trial.</p>
+                          <a href="#" class="btn btn-primary">Add to Watchlist</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "col-md-4">
+                      <div class="card" style="width: 15rem;">
+                        <img src="assets/silverlinings.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Silver Linings Playbook</h5>
+                          <p class="card-text">After a stint in a mental institution, former teacher Pat Solitano moves back in with his parents and tries to reconcile with his ex-wife. Things get more challenging when Pat meets Tiffany, a mysterious girl with problems of her own.</p>
+                          <a href="#" class="btn btn-primary">Add to Watchlist</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "col-md-4">
+                      <div class="card" style="width: 15rem;">
+                        <img src="assets/harrysally.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">When Harry Met Sally...</h5>
+                          <p class="card-text">Harry and Sally have known each other for years, and are very good friends, but they fear sex would ruin the friendship.</p>
+                          <a href="#" class="btn btn-primary">Add to Watchlist</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">hi</div>
+            <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+          </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
