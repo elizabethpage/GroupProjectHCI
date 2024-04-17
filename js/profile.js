@@ -73,17 +73,18 @@ function addToList2(){
     cardNum = cardNum + 1;
     buttonNum = buttonNum + 1;
 
-    var cardTemplate = 
+    var cardTemplate2 = 
     '    <div class="card" id="card' + cardNum + '">                                            '+
         '    <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">'+
         '    <div class="card-body">'+
         '      <h5 class="card-title">'+ title +'</h5>'+
         '      <p class="card-text">'+ content +'</p>'+
+        '      <p class="placeholder"></p>'+
         '      <button id="deleteButton' + buttonNum + '" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>'+
         '    </div>'+
         '</div>';
 
-    document.getElementById("carouselItem3").insertAdjacentHTML("beforebegin", cardTemplate);
+    document.getElementById("carouselItem3").insertAdjacentHTML("beforebegin", cardTemplate2);
 
     function adder(card){
         for(let i=0;i<card.length;i++){
@@ -109,7 +110,7 @@ function moveToWatched(thisID){
         '    <div class="card-body">'+
         '      <h5 class="card-title">'+ title +'</h5>'+
         '      <p class="card-text">'+ content +'</p>'+
-        '      <button type="button" class="btn btn-primary" onclick="addToList()">Move to Watched</button>'+
+        '      <p class="placeholder"></p>'+
         '      <button id="deleteButton' + buttonNum + '" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>'+
         '    </div>'+
         '</div>';
