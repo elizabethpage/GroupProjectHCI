@@ -15,6 +15,14 @@
     <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/profile.js"></script>
     
+    <!--CSS-->
+    <link rel="stylesheet" href="css/index.css">
+
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -50,17 +58,20 @@
                                 </li>
                                 <li class="nav-item">
                                   <a class="nav-link active" href="Profile.html">Profile</a>
-                                <li class="nav-item">
-                                    <form id="searchBar" class="d-flex">
-                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                        <button class="btn btn-outline-primary" type="submit">Search</button>
-                                    </form>
+                                </li>
                             </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
+                          </div>
+                          <!-- Separate div for search bar aligned to the right -->
+                          <div class="ms-auto">
+                              <form class="d-flex">
+                                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                  <button class="btn" type="submit"></button>
+                              </form>
+                          </div>
+                      </div>
+                  </nav>
+              </div>
+          </div>
 
 <!--Watchlist-->
     <div class="row">
@@ -76,38 +87,38 @@
                     <div class="card-wrapper">
                         <div class="card" id="card1" >
                             <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                            <div class="card-body">
+                            <div class="card-body lato-regular">
                               <h5 class="card-title">MOVIE NAME</h5>
                               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <button id="moveButton1" type="button" class="btn btn-primary" onclick="moveToWatched(id)">Move to Watched</button>
-                              <button id="deleteButton1" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                              <button id="moveButton1" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
+                              <button id="deleteButton1" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                             </div>
                         </div>
                         <div class="card" id="card2" >
                             <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                            <div class="card-body">
+                            <div class="card-body lato-regular">
                               <h5 class="card-title">MOVIE NAME</h5>
                               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <button id="moveButton2" type="button" class="btn btn-primary" onclick="moveToWatched(id)">Move to Watched</button>
-                              <button id="deleteButton2" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                              <button id="moveButton2" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
+                              <button id="deleteButton2" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                             </div>
                         </div>
                         <div class="card" id="card3" >
                             <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                            <div class="card-body">
+                            <div class="card-body lato-regular">
                               <h5 class="card-title">MOVIE NAME</h5>
                               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <button id="moveButton3" type="button" class="btn btn-primary" onclick="moveToWatched(id)">Move to Watched</button>
-                              <button id="deleteButton3" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                              <button id="moveButton3" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
+                              <button id="deleteButton3" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                             </div>
                         </div>
                         <div class="card" id="card4" >
                             <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                            <div class="card-body">
+                            <div class="card-body lato-regular">
                               <h5 class="card-title">MOVIE NAME</h5>
                               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <button id="moveButton4" type="button" class="btn btn-primary" onclick="moveToWatched(id)">Move to Watched</button>
-                              <button id="deleteButton4" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                              <button id="moveButton4" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
+                              <button id="deleteButton4" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -116,20 +127,20 @@
                     <div class="card-wrapper">
                         <div class="card" id="card5" >
                             <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                            <div class="card-body">
+                            <div class="card-body lato-regular">
                               <h5 class="card-title">MOVIE NAME</h5>
                               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <button id="moveButton5" type="button" class="btn btn-primary" onclick="moveToWatched(id)">Move to Watched</button>
-                              <button id="deleteButton5" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                              <button id="moveButton5" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
+                              <button id="deleteButton5" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                             </div>
                         </div>
                         <div class="card" id="card6" >
                             <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                            <div class="card-body">
+                            <div class="card-body lato-regular">
                               <h5 class="card-title">MOVIE NAME</h5>
                               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <button id="moveButton6" type="button" class="btn btn-primary" onclick="moveToWatched(id)">Move to Watched</button>
-                              <button id="deleteButton6" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                              <button id="moveButton6" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
+                              <button id="deleteButton6" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                             </div>
                         </div>
                         <!--start adding next card here-->
@@ -155,7 +166,7 @@
     <!-- Add to List -->
         <!-- Button trigger modal -->
     <div class="row">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-customcolor" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Add to List
         </button>
         
@@ -186,8 +197,8 @@
                       </form>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="addToList()">Add to List</button>
+                <button type="button" class="btn btn-customcolor" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-customcolor" onclick="addToList()">Add to List</button>
                 </div>
             </div>
             </div>
@@ -208,34 +219,34 @@
                 <div class="card-wrapper">
                     <div class="card" id="card7" >
                         <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                        <div class="card-body">
+                        <div class="card-body lato-regular">
                           <h5 class="card-title">MOVIE NAME</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <button id="deleteButton7" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                          <button id="deleteButton7" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                         </div>
                     </div>
                     <div class="card" id="card8" >
                         <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                        <div class="card-body">
+                        <div class="card-body lato-regular">
                           <h5 class="card-title">MOVIE NAME</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <button id="deleteButton8" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                          <button id="deleteButton8" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                         </div>
                     </div>
                     <div class="card" id="card9" >
                         <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                        <div class="card-body">
+                        <div class="card-body lato-regular">
                           <h5 class="card-title">MOVIE NAME</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <button id="deleteButton9" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                          <button id="deleteButton9" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                         </div>
                     </div>
                     <div class="card" id="card10" >
                         <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                        <div class="card-body">
+                        <div class="card-body lato-regular">
                           <h5 class="card-title">MOVIE NAME</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <button id="deleteButton10" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                          <button id="deleteButton10" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -244,18 +255,18 @@
                 <div class="card-wrapper">
                     <div class="card" id="card11" >
                         <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                        <div class="card-body">
+                        <div class="card-body lato-regular">
                           <h5 class="card-title">MOVIE NAME</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <button id="deleteButton11" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                          <button id="deleteButton11" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                         </div>
                     </div>
                     <div class="card" id="card12" >
                         <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                        <div class="card-body">
+                        <div class="card-body lato-regular">
                           <h5 class="card-title">MOVIE NAME</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <button id="deleteButton12" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                          <button id="deleteButton12" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                         </div>
                     </div>
                     <!--start adding next card here-->
@@ -281,12 +292,12 @@
 <!--Add to List-->
     <!-- Button trigger modal -->
 <div class="row">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+    <button type="button" class="btn btn-customcolor lato-regular" data-bs-toggle="modal" data-bs-target="#exampleModal2">
         Add to List
     </button>
     
     <!-- Modal -->
-    <div class="modal fade modal-lg" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade modal-lg loto-regular" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -312,8 +323,8 @@
                   </form>
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="addToList2()">Add to List</button>
+            <button type="button" class="btn btn-customcolor" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-customcolor" onclick="addToList2()">Add to List</button>
             </div>
         </div>
         </div>
@@ -325,12 +336,12 @@
 <div class="row">
     <header>
         <div class="col-xs-12">
-            <h2>Lists</h2>
+            <h2 class="lato-regular">Lists</h2>
         </div>
       </header>  
       <main>
 <!-- Tab bar-->
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs lato-regular" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <button class="nav-link active" id="Y2K-tab" data-bs-toggle="tab" data-bs-target="#Y2K-tab-pane" type="button" role="tab" aria-controls="Y2K-tab-pane" aria-selected="true">Y2K</button>
     </li>
@@ -349,10 +360,10 @@
             </div>
             <div class="card" id="card13" >
                 <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                <div class="card-body">
+                <div class="card-body lato-regular">
                   <h5 class="card-title">MOVIE NAME</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <button id="deleteButton13" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                  <button id="deleteButton13" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                 </div>
             </div>
         </div>
@@ -367,10 +378,10 @@
             </div>
             <div class="card" id="card14" >
                 <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                <div class="card-body">
+                <div class="card-body lato-regular">
                   <h5 class="card-title">MOVIE NAME</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <button id="deleteButton14" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                  <button id="deleteButton14" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
                 </div>
             </div>
         </div>
@@ -382,12 +393,12 @@
 <!--Create List-->
     <!-- Button trigger modal -->
     <div class="row">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+        <button type="button" class="btn btn-customcolor" data-bs-toggle="modal" data-bs-target="#exampleModal2">
             Add List
         </button>
         
         <!-- Modal -->
-        <div class="modal fade modal-lg" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade modal-lg lato-regular" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -408,8 +419,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="addToList2()">Add List</button>
+                <button type="button" class="btn btn-customcolor" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-customcolor" onclick="addToList2()">Add List</button>
                 </div>
             </div>
             </div>
@@ -420,7 +431,7 @@
 
     <div>
         <footer>
-            End of Page
+            Movie Application
         </footer>
     </div>
 
