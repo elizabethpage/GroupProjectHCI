@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
 
     <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!--CSS-->
+    <link rel="stylesheet" href="css/index.css">
+
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -19,14 +28,14 @@
         <!-- Title -->
         <div class="row">
             <div class="col-xs-12">
-                <h1>OUR APP</h1>
+                <h1 class="lato-bold">Movie Application</h1>
             </div>
         </div>
 
         <!-- Menu -->
         <div class="row">
             <div class="col-xs-12">
-                <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+                <nav class="navbar navbar-expand-lg navbar-customcolor">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="HomePage.html">Home</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -35,7 +44,7 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
+                            <ul class="navbar-nav lato-regular">
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="TVShows.html">TV Shows</a>
                                 </li>
@@ -47,14 +56,17 @@
                                 </li>
                                 <li class="nav-item">
                                   <a class="nav-link active" href="Profile.html">Profile</a>
-                                <li class="nav-item">
-                                    <form class="d-flex">
-                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                        <button class="btn btn-outline-primary" type="submit">Search</button>
-                                    </form>
+                                </li>
                             </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
+                          </div>
+                          <!-- Separate div for search bar aligned to the right -->
+                          <div class="ms-auto">
+                              <form class="d-flex">
+                                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                  <button class="btn" type="submit"></button>
+                              </form>
+                          </div>
+                      </div>
+                  </nav>
+              </div>
+          </div>

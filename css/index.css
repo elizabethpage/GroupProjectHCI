@@ -28,14 +28,19 @@
   }
 
   .navbar-customcolor {
-    background-color: #c59de2d0; /* Example custom color */
+    background-color: #b97ce4d0; /* Example custom color */
   }
 
   .card-section {
     margin-top: 20px; /* Adjust as needed */
     margin-bottom: 30px; /* Adjust as needed */
-}
+  }
 
   .card-body p.card-text {
     font-size: 12px; /* Adjust as needed */
   }
+
+.nav-tabs .nav-link {
+  color: black !important;
+  }
+
