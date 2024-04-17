@@ -10,8 +10,11 @@
 
     <!-- Bootstrap links to css and JavaScript-->
     <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/profile.css">
 
     <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/profile.js"></script>
+    
 </head>
 
 <body>
@@ -48,7 +51,7 @@
                                 <li class="nav-item">
                                   <a class="nav-link active" href="Profile.html">Profile</a>
                                 <li class="nav-item">
-                                    <form class="d-flex">
+                                    <form id="searchBar" class="d-flex">
                                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                                         <button class="btn btn-outline-primary" type="submit">Search</button>
                                     </form>
@@ -58,3 +61,368 @@
                 </nav>
             </div>
         </div>
+
+<!--Watchlist-->
+    <div class="row">
+        <header>
+            <div class="col-xs-12">
+                <h2>Watchlist</h2>
+            </div>
+          </header>  
+          <main>
+            <div id="carouselExampleControls" class="carousel slide" data-interval="false">
+                <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="card-wrapper">
+                        <div class="card" id="card1" >
+                            <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                            <div class="card-body">
+                              <h5 class="card-title">MOVIE NAME</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <button id="moveButton1" type="button" class="btn btn-primary" onclick="moveToWatched(id)">Move to Watched</button>
+                              <button id="deleteButton1" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                            </div>
+                        </div>
+                        <div class="card" id="card2" >
+                            <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                            <div class="card-body">
+                              <h5 class="card-title">MOVIE NAME</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <button id="moveButton2" type="button" class="btn btn-primary" onclick="moveToWatched(id)">Move to Watched</button>
+                              <button id="deleteButton2" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                            </div>
+                        </div>
+                        <div class="card" id="card3" >
+                            <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                            <div class="card-body">
+                              <h5 class="card-title">MOVIE NAME</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <button id="moveButton3" type="button" class="btn btn-primary" onclick="moveToWatched(id)">Move to Watched</button>
+                              <button id="deleteButton3" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                            </div>
+                        </div>
+                        <div class="card" id="card4" >
+                            <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                            <div class="card-body">
+                              <h5 class="card-title">MOVIE NAME</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <button id="moveButton4" type="button" class="btn btn-primary" onclick="moveToWatched(id)">Move to Watched</button>
+                              <button id="deleteButton4" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card-wrapper">
+                        <div class="card" id="card5" >
+                            <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                            <div class="card-body">
+                              <h5 class="card-title">MOVIE NAME</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <button id="moveButton5" type="button" class="btn btn-primary" onclick="moveToWatched(id)">Move to Watched</button>
+                              <button id="deleteButton5" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                            </div>
+                        </div>
+                        <div class="card" id="card6" >
+                            <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                            <div class="card-body">
+                              <h5 class="card-title">MOVIE NAME</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <button id="moveButton6" type="button" class="btn btn-primary" onclick="moveToWatched(id)">Move to Watched</button>
+                              <button id="deleteButton6" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                            </div>
+                        </div>
+                        <!--start adding next card here-->
+                        <span id="carouselItem2"></span>
+                    </div>
+                </div>
+                <!--for next row create new carousel item and card wrapper class, start adding elements in-->
+                <span id="newCarouselItem"></span>
+        
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </main>
+          
+
+    <!-- Add to List -->
+        <!-- Button trigger modal -->
+    <div class="row">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add to List
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addBlog" method="POST">
+                        <div class="container container-lg">
+                        <div class="mb-3">
+                          <label for="title" class="form-label">Title:</label>
+                          <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                          <label for="content" class="form-label">Notes:</label>
+                          <input type="text" class="form-control" id="content">
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="User" class="form-label">Created By :</label>
+                            <input type="text" class="form-control" id="username">
+                          </div> -->
+                        
+                      </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="addToList()">Add to List</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+<!--Watched-->
+<div class="row">
+    <header>
+        <div class="col-xs-12">
+            <h2>Watched</h2>
+        </div>
+      </header>  
+      <main>
+        <div id="carousel2" class="carousel slide" data-interval="false">
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="card-wrapper">
+                    <div class="card" id="card7" >
+                        <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                        <div class="card-body">
+                          <h5 class="card-title">MOVIE NAME</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <button id="deleteButton7" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                        </div>
+                    </div>
+                    <div class="card" id="card8" >
+                        <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                        <div class="card-body">
+                          <h5 class="card-title">MOVIE NAME</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <button id="deleteButton8" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                        </div>
+                    </div>
+                    <div class="card" id="card9" >
+                        <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                        <div class="card-body">
+                          <h5 class="card-title">MOVIE NAME</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <button id="deleteButton9" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                        </div>
+                    </div>
+                    <div class="card" id="card10" >
+                        <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                        <div class="card-body">
+                          <h5 class="card-title">MOVIE NAME</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <button id="deleteButton10" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card-wrapper">
+                    <div class="card" id="card11" >
+                        <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                        <div class="card-body">
+                          <h5 class="card-title">MOVIE NAME</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <button id="deleteButton11" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                        </div>
+                    </div>
+                    <div class="card" id="card12" >
+                        <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                        <div class="card-body">
+                          <h5 class="card-title">MOVIE NAME</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <button id="deleteButton12" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                        </div>
+                    </div>
+                    <!--start adding next card here-->
+                    <span id="carouselItem3"></span>
+                </div>
+            </div>
+            <!--for next row create new carousel item and card wrapper class, start adding elements in-->
+            <span id="newCarouselItem"></span>
+    
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </main>
+      
+
+<!--Add to List-->
+    <!-- Button trigger modal -->
+<div class="row">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+        Add to List
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade modal-lg" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addBlog2" method="POST">
+                    <div class="container container-lg">
+                    <div class="mb-3">
+                      <label for="title" class="form-label">Title:</label>
+                      <input type="text" class="form-control" id="title2" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="content" class="form-label">Notes:</label>
+                      <input type="text" class="form-control" id="content2">
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="User" class="form-label">Created By :</label>
+                        <input type="text" class="form-control" id="username">
+                      </div> -->
+                    
+                  </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="addToList2()">Add to List</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Custom Lists-->
+<div class="row">
+    <header>
+        <div class="col-xs-12">
+            <h2>Lists</h2>
+        </div>
+      </header>  
+      <main>
+<!-- Tab bar-->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="Y2K-tab" data-bs-toggle="tab" data-bs-target="#Y2K-tab-pane" type="button" role="tab" aria-controls="Y2K-tab-pane" aria-selected="true">Y2K</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="chickflick-tab" data-bs-toggle="tab" data-bs-target="#chickflick-tab-pane" type="button" role="tab" aria-controls="chickflick-tab" aria-selected="false">Chick Flicks</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    
+    <!-- Y2K filter-->
+    <div class="tab-pane fade show active" id="Y2K-tab-pane" role="tabpanel" aria-labelledby="Y2K-tab" tabindex="0">
+
+        <div class="row">
+            <div class="col-md-12">
+              <h3 class="card-title mb-3">Y2K Movies</h3>
+            </div>
+            <div class="card" id="card13" >
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                <div class="card-body">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <button id="deleteButton13" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                </div>
+            </div>
+        </div>
+          
+    </div>
+
+    <!-- Chick Flicks filter -->
+    <div class="tab-pane fade" id="chickflick-tab-pane" role="tabpanel" aria-labelledby="chickflick-tab" tabindex="0">
+        <div class="row">
+            <div class="col-md-12">
+              <h3 class="card-title mb-3">Chick Flicks</h3>
+            </div>
+            <div class="card" id="card14" >
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
+                <div class="card-body">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <button id="deleteButton14" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<!--Create List-->
+    <!-- Button trigger modal -->
+    <div class="row">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+            Add List
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade modal-lg" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addBlog2" method="POST">
+                        <div class="container container-lg">
+                        <div class="mb-3">
+                          <label for="title" class="form-label">Title:</label>
+                          <input type="text" class="form-control" id="title3" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                          <label for="content" class="form-label">Notes:</label>
+                          <input type="text" class="form-control" id="content3">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="addToList2()">Add List</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</main>
+</div>
+
+    <div>
+        <footer>
+            End of Page
+        </footer>
+    </div>
+
+    </body>
+</html>
