@@ -76,7 +76,7 @@ function addToList2(){
     var cardTemplate2 = 
     '    <div class="card" id="card' + cardNum + '">                                            '+
         '    <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">'+
-        '    <div class="card-body">'+
+        '    <div class="card-body lato-regular">'+
         '      <h5 class="card-title">'+ title +'</h5>'+
         '      <p class="card-text">'+ content +'</p>'+
         '      <p class="placeholder"></p>'+
