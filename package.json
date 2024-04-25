@@ -7,7 +7,7 @@
     "dev": "node server.js",
     "start": "node server.js"
   },
-  "author": "Your Name",
+  "author": "HCI Project Team",
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.7.1"
