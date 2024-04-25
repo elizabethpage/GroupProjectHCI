@@ -21,8 +21,8 @@ function addToList(){
         '    <div id="cardBody" class="card-body">'+
         '      <h5 id="title" class="card-title">'+ title +'</h5>'+
         '      <p id="content" class="card-text">'+ content +'</p>'+
-        '      <button id="moveButton' + moveNum + '" type="button" class="btn btn-primary" onclick="moveToWatched(id)">Move to Watched</button>'+
-        '      <button id="deleteButton' + buttonNum + '" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>'+
+        '      <button id="moveButton' + moveNum + '" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>'+
+        '      <button id="deleteButton' + buttonNum + '" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>'+
         '    </div>'+
         '</div>';
 
@@ -80,7 +80,7 @@ function addToList2(){
         '      <h5 class="card-title">'+ title +'</h5>'+
         '      <p class="card-text">'+ content +'</p>'+
         '      <p class="placeholder"></p>'+
-        '      <button id="deleteButton' + buttonNum + '" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>'+
+        '      <button id="deleteButton' + buttonNum + '" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>'+
         '    </div>'+
         '</div>';
 
@@ -111,13 +111,13 @@ function moveToWatched(thisID){
         '      <h5 class="card-title">'+ title +'</h5>'+
         '      <p class="card-text">'+ content +'</p>'+
         '      <p class="placeholder"></p>'+
-        '      <button id="deleteButton' + buttonNum + '" type="button" class="btn btn-primary" onclick="deleteButton(id)">Delete</button>'+
+        '      <button id="deleteButton' + buttonNum + '" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>'+
         '    </div>'+
         '</div>';
 
     //add
     document.getElementById("carouselItem3").insertAdjacentHTML("beforebegin", cardTemplate2);
-    deleteButton("deleteButton"+ buttonNum);
+    // deleteButton("deleteButton"+ buttonNum);
 }
 
 //create function delete from row
