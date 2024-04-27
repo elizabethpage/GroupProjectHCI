@@ -25,79 +25,42 @@
     
 
     // asynchronously loads data when page is mounted
-    onMounted(() => fetch(dataFile)
-        .then((res) => res.text())
-        .then((text) => loadData(text))
-        .then((parsedText) => showData(parsedText)));
+    onMounted(() => {
+        fetch(dataFile)
+            .then((res) => res.text())
+            .then((text) => loadData(text))
+            .then((parsedText) => showData(parsedText))
+    });
     
-    // asynchronous function to wrap around parse process
+    // Asynchronously parse CSV data
     async function loadData(dataText) {
-        console.log("ready to load data");
-        let data = papaparse.parse(dataText, {delimter: ",", header: true});
+        console.log("Ready to load data");
+        let data = papaparse.parse(dataText, { delimiter: ",", header: true });
         return data;
     }
 
-    // get data ready to show
+    // Update movieData and loaded status after data is loaded
     function showData(parsedData) {
-        console.log("data loaded");
-    
-
-    // get data 
-    movieData.value = parsedData.slice(2);
-
-    // show data
-    loaded.value = true;
+        console.log("Data loaded");
+        movieData.value = parsedData.data.slice(2); // Slice to skip header rows
+        loaded.value = true;
     }
 
-    // dynamically generated filtered and sorted data
-    const filteredMovieData = computed(
-        () => {
-            // first, filter by title
-            let filteredByTitle = movieData.value;
+    // Dynamically generate filtered and sorted data
+    const filteredMovieData = computed(() => {
+        let filteredByTitle = movieData.value.slice(); // Make a copy to avoid mutating original data
 
-            filteredByTitle.sort((a, b) => {
-                var start = a[whatToSort.value];
-                var end = b[whatToSort.value];
+        // Sorting logic based on selected column
+        filteredByTitle.sort((a, b) => {
+            if (whatToSort.value === 'Series_Title') {
+                return a.Series_Title.localeCompare(b.Series_Title) * sortDirection.value;
+            } else if (whatToSort.value === 'Released_Year') {
+                return (a.Released_Year - b.Released_Year) * sortDirection.value;
+            }
+            // Add more cases for other columns if needed
+        });
 
-                if (whatToSort.value == 1) {
-                    start = Number(a[whatToSort.value]);
-                    end = Number(b[whatToSort.value]);
-                }
-            });
-        }
-    )
-
-
+        return filteredByTitle; // Return sorted data
+    });
 </script>
-
-
-  
-
-
-<template>
-    <div class="container">
-        
-        <div v-if="loaded">
-        
-            <!-- Title-->
-            <div class="row">
-                <h1>Movies</h1>
-                <hr/>
-            </div>
-
-            <!-- table body with data -->
-            <tbody>
-                <tr v-for="movie in filteredMovieData">
-                    <td>{{ movie.Series_Title }}</td>
-                    <td>{{ movie.Released_Year }} </td>
-                </tr>
-            </tbody>
-
-
-        </div>
-
-        <div v-else>
-            <p>Loading data...</p>
-        </div>
-    </div>
-</template>
+    
