@@ -1,14 +1,22 @@
-var movieData;
+let movieData = null;
 
-function printFile() {
-    fetch('assets/imdb_top_1000.csv')
-        .then(response => response.text())
-        // .then(text => console.log(text))
-        .then(text => movieData = text)
-    .then(() => {
-        document.getElementById("output").insertAdjacentHTML("beforebegin", movieData);
-      });
-  }
+function printFile(){
+	fetch('assets/imdb_top_1000.csv')
+		.then(function(response) {
+			return response.text();
+		})
+		.then(function(data) {
+			movieData = data;
+			console.log(movieData);
+            sortMovieData(movieData);
+		});
+}
+
+function sortMovieData(movieData) {
+    document.getElementById("output").insertAdjacentHTML("beforebegin", movieData);
+    return movieData;
+}
+
 
 // function processData(csv) {
 //     var lines = csv.split("\n");
@@ -44,3 +52,7 @@ function printFile() {
 //         movieCatalog.append(movieCard);
 //     });
 // }
+function callAll(){
+    movies = printFile()
+    document.getElementById("output").insertAdjacentHTML("beforebegin", movies);
+}
