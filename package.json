@@ -10,6 +10,7 @@
   "author": "HCI Project Team",
   "license": "ISC",
   "dependencies": {
+    "csv-parser": "^3.0.0",
     "jquery": "^3.7.1",
     "vue-router": "^4.3.2"
   }
