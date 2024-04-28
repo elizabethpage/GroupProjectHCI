@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
   // Determine the requested URL path
   let filePath = '.' + req.url;
   if (filePath === './') {
-    filePath = './HomePage.vue'; // Default file to serve
+    filePath = './HomePage.html'; // Default file to serve
   }
 
   // Check if the requested file is the CSV file
