@@ -1,3 +1,4 @@
+//global movieData variable
 let movieData = null;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -9,73 +10,60 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-function printFile(){
-	console.log('printFile function called')
-	fetch('assets/imdb_top_1000.csv')
-		.then(function(response) {
-			return response.text();
-		})
-		.then(function(data) {
-			console.log('Data fetched succesfully:', data)
-			movieData = data;
-			console.log(movieData);
-            // displayRaw(movieData);
-            var movieCatalog = processData(movieData);
-            // console.log(array)
-            // var catalog = displayMovieCatalog(array);
-            // console.log(catalog)
-			displayRaw(movieCatalog);
-		});
-		
+//function that fetches data and calls all the other functions needed for the page
+function display() {
+    fetch('/assets/imdb_top_1000.csv')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); 
+      movieData = data;
+    //   displayThisMovie(0);
+      displayRow();
+
+      //add functions HERE to make sure they are called AFTER data is fetched
+
+    })
+    .catch(error => {
+      // Handle any errors that occur during the fetch
+      console.error('Error fetching JSON:', error);
+    });
 }
 
-function displayRaw(movieData) {
-    document.getElementById("output").insertAdjacentHTML("beforebegin", movieData);
-    return movieData;
+//display ONE movie from json object array
+function displayThisMovie(movieArrNum) {
+
+    //getting json object data
+    title = movieData[movieArrNum].Series_Title;
+    image = movieData[movieArrNum].Poster_Link;
+    overview = movieData[movieArrNum].Overview;
+
+    //making the movie card
+    let movieCard = '';
+    movieCard += `
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=${image} class="card-img-top" alt=${title}>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>${title}</h5>
+                <p class='card-text'>${overview}</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>`;
+    return movieCard;
 }
 
-function processData(csv) {
-    var lines = csv.split("\n");
-    var headers = lines[0].split(",");
-    var dataArray = [];
+function displayRow(){
+    let displayThis = '';
 
-    for (var i = 1; i < lines.length; i++) {
-        var obj = {};
-        var currentLine = lines[i].split(",");
-        for (var j = 0; j < headers.length; j++) {
-            obj[headers[j]] = currentLine[j];
-        }
-        dataArray.push(obj);
-    }
-
-    console.log(dataArray)
-
-    let movieCatalog = '';
-    for (let i = 0; i < 10 && i < dataArray.length; i++) {
-        // let img = dataArray[i]['Poster_Link'];
-        let title = dataArray[i]['Runtime'];
-        let overview = dataArray[i]['Star1'];
-        movieCatalog += `
-            <div class='card movie-card'>
-                <div class='card-body'>
-                    <h5 class='card-title'>${title}</h5>
-                    <p class='card-text'>${overview}</p>
-                </div>
+    //creating row div start
+    const rowDiv = `
+        <div class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Classics</h2>
             </div>`;
     }
-
-	console.log(movieCatalog);
-
-
-	var movieCatalogContainer = document.getElementById("movieCatalogContainer");
-    if (movieCatalogContainer) {
-        movieCatalogContainer.innerHTML = ''; // Clear existing content
-        movieCatalogContainer.insertAdjacentHTML('beforeend', movieCatalog); // Insert new content
-    } else {
-        console.error("Container element not found.");
-    }
-
-    //document.getElementById("output").insertAdjacentHTML("beforeend", movieCatalog);
+    document.getElementById("output").insertAdjacentHTML("beforeend", movieCatalog);
 
     return movieCatalog;
 }

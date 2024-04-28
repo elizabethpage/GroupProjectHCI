@@ -6,9 +6,6 @@ const csvParser = require('csv-parser');
 // Define the port number for your server
 const port = 3000;
 
-// Set the path to your Vue.js application's `dist` directory
-const appDir = './';
-
 // Create a simple HTTP server
 const server = http.createServer((req, res) => {
   // Determine the requested URL path
