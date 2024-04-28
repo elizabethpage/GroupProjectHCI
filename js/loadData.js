@@ -1,32 +1,19 @@
 let movieData = null;
 
-document.addEventListener('DOMContentLoaded', function() {
-    var printButton = document.getElementById('printButton');
-    printButton.addEventListener('click', printFile);
-});
-
-
-
-
-
 function printFile(){
-	console.log('printFile function called')
 	fetch('assets/imdb_top_1000.csv')
 		.then(function(response) {
 			return response.text();
 		})
 		.then(function(data) {
-			console.log('Data fetched succesfully:', data)
 			movieData = data;
 			console.log(movieData);
             // displayRaw(movieData);
-            var movieCatalog = processData(movieData);
+            var array = processData(movieData);
             // console.log(array)
             // var catalog = displayMovieCatalog(array);
             // console.log(catalog)
-			displayRaw(movieCatalog);
 		});
-		
 }
 
 function displayRaw(movieData) {
@@ -63,19 +50,7 @@ function processData(csv) {
                 </div>
             </div>`;
     }
-
-	console.log(movieCatalog);
-
-
-	var movieCatalogContainer = document.getElementById("movieCatalogContainer");
-    if (movieCatalogContainer) {
-        movieCatalogContainer.innerHTML = ''; // Clear existing content
-        movieCatalogContainer.insertAdjacentHTML('beforeend', movieCatalog); // Insert new content
-    } else {
-        console.error("Container element not found.");
-    }
-
-    //document.getElementById("output").insertAdjacentHTML("beforeend", movieCatalog);
+    document.getElementById("output").insertAdjacentHTML("beforeend", movieCatalog);
 
     return movieCatalog;
 }
