@@ -66,4 +66,4 @@ function displayRow(){
     document.getElementById("output").insertAdjacentHTML("beforeend", movieCatalog);
 
     return movieCatalog;
-}
+
