@@ -22,9 +22,13 @@ function display() {
 
 //display ONE movie from json object array
 function displayThisMovie(movieArrNum) {
+
+    //getting json object data
     title = movieData[movieArrNum].Series_Title;
     image = movieData[movieArrNum].Poster_Link;
     overview = movieData[movieArrNum].Overview;
+
+    //making the movie card
     let movieCard = '';
     movieCard += `
     <div class = "col-md-3">
@@ -38,7 +42,6 @@ function displayThisMovie(movieArrNum) {
         </div>
     </div>`;
     return movieCard;
-    // document.getElementById("output").insertAdjacentHTML("beforebegin", movieCard);
 }
 
 function displayRow(){
