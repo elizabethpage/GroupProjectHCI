@@ -1,56 +1,67 @@
+//global movieData variable
 let movieData = null;
 
-function printFile(){
-	fetch('assets/imdb_top_1000.csv')
-		.then(function(response) {
-			return response.text();
-		})
-		.then(function(data) {
-			movieData = data;
-			console.log(movieData);
-            // displayRaw(movieData);
-            var array = processData(movieData);
-            // console.log(array)
-            // var catalog = displayMovieCatalog(array);
-            // console.log(catalog)
-		});
+//function that fetches data and calls all the other functions needed for the page
+function display() {
+    fetch('/assets/imdb_top_1000.csv')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); 
+      movieData = data;
+    //   displayThisMovie(0);
+      displayRow();
+
+      //add functions HERE to make sure they are called AFTER data is fetched
+
+    })
+    .catch(error => {
+      // Handle any errors that occur during the fetch
+      console.error('Error fetching JSON:', error);
+    });
 }
 
-function displayRaw(movieData) {
-    document.getElementById("output").insertAdjacentHTML("beforebegin", movieData);
-    return movieData;
+//display ONE movie from json object array
+function displayThisMovie(movieArrNum) {
+    title = movieData[movieArrNum].Series_Title;
+    image = movieData[movieArrNum].Poster_Link;
+    overview = movieData[movieArrNum].Overview;
+    let movieCard = '';
+    movieCard += `
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=${image} class="card-img-top" alt=${title}>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>${title}</h5>
+                <p class='card-text'>${overview}</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>`;
+    return movieCard;
+    // document.getElementById("output").insertAdjacentHTML("beforebegin", movieCard);
 }
 
-function processData(csv) {
-    var lines = csv.split("\n");
-    var headers = lines[0].split(",");
-    var dataArray = [];
+function displayRow(){
+    let displayThis = '';
 
-    for (var i = 1; i < lines.length; i++) {
-        var obj = {};
-        var currentLine = lines[i].split(",");
-        for (var j = 0; j < headers.length; j++) {
-            obj[headers[j]] = currentLine[j];
-        }
-        dataArray.push(obj);
-    }
-
-    console.log(dataArray)
-
-    let movieCatalog = '';
-    for (let i = 0; i < 10 && i < dataArray.length; i++) {
-        // let img = dataArray[i]['Poster_Link'];
-        let title = dataArray[i]['Runtime'];
-        let overview = dataArray[i]['Star1'];
-        movieCatalog += `
-            <div class='card movie-card'>
-                <div class='card-body'>
-                    <h5 class='card-title'>${title}</h5>
-                    <p class='card-text'>${overview}</p>
-                </div>
+    //creating row div start
+    const rowDiv = `
+        <div class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Classics</h2>
             </div>`;
-    }
-    document.getElementById("output").insertAdjacentHTML("beforeend", movieCatalog);
+    displayThis = displayThis + rowDiv
 
-    return movieCatalog;
+    //loop through movies we want in the row
+    for (let i = 0; i < 10; i++) {
+        displayThis = displayThis + displayThisMovie(i);
+      }
+    
+    //creating row div end
+    const rowEnd = `
+    </div>`
+    displayThis = displayThis + rowEnd;
+
+    //displaying movies
+    document.getElementById("output").insertAdjacentHTML("beforebegin", displayThis);
 }
