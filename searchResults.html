@@ -23,14 +23,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
-    <!--JavaScript for calling displayPopularNow and displayFreshFinds-->
-    <script>
-      window.onload = function() {
-          displayPopularNow();
-          displayFreshFinds();
-          displayClassics();
-      };
-  </script>
 </head>
 
 <body>
@@ -71,10 +63,10 @@
                               </div>
                             <!-- Separate div for search bar aligned to the right -->
                             <div class="ms-auto">
-                              <form id="searchForm" class="d-flex" action="SearchBar.html" method="GET">
-                                <input id="searchInput" class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
-                                <button class="btn" type="submit"></button>
-                              </form>
+                                <form class="d-flex">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn" type="submit"></button>
+                                </form>
                             </div>
                         </div>
                     </nav>
@@ -87,52 +79,6 @@
         <pre id="output"></pre>
     </div>
 
-    <script>
-      // Function to handle search form submission
-      function handleSearchFormSubmission(event) {
-        event.preventDefault(); // Prevent form submission
-    
-        const searchQuery = document.getElementById("searchInput").value.trim();
-        if (searchQuery !== "") {
-          // Make AJAX request to the server for search results
-          fetch(`/search?q=${encodeURIComponent(searchQuery)}`)
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return response.json();
-            })
-            .then(data => {
-              // Display search results dynamically
-              displaySearchResults(data);
-            })
-            .catch(error => {
-              console.error('Error fetching search results:', error);
-            });
-        }
-      }
-    
-      // Function to display search results dynamically
-      function displaySearchResults(filteredData) {
-        let displayThis = '';
-    
-        // Loop through filtered movies
-        filteredData.forEach(movie => {
-          displayThis += displayThisMovie(movie);
-        });
-    
-        // Displaying movies
-        document.getElementById("output").innerHTML = displayThis;
-      }
-    
-      // Attach event listener to search form
-      document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("searchForm").addEventListener("submit", handleSearchFormSubmission);
-      });
-    </script>
-    
-
 </body>
 
 </html>
-
