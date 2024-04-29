@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
 
     <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/displayCards.js"></script>
 
     <!--CSS-->
     <link rel="stylesheet" href="css/index.css">
@@ -21,15 +20,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-
-    <!--JavaScript for calling displayPopularNow and displayFreshFinds-->
-    <script>
-      window.onload = function() {
-          displayPopularNow();
-          displayFreshFinds();
-          displayClassics();
-      };
-  </script>
 
 </head>
 
@@ -80,19 +70,169 @@
                     </nav>
                 </div>
             </div>
-    </class>
 
-    <div class="row card-section">
-      <div class="col-md-12">
-        <h2 class="card-title mb-3 lato-bold">Movies</h2>
-      </div>
 
-    <div>
-      <!-- <button type="button" class="btn btn-primary" onclick='display()'>Primary</button> -->
-     <pre id="output"></pre>
+          <!-- Main content -->
+          <div class="row card-section">
+            <div class="col-md-12">
+              <h2 class="card-title mb-3 lato-bold">Movies</h2>
+            </div>
+          
+
+          <!-- Main content - Popular Now -->
+          <div class="row card-section">
+            <div class="col-md-12">
+              <h2 class="card-title mb-3 lato-bold">Popular Now</h2>
+            </div>
+            <div class = "col-md-3">
+              <div class="card" style="width: 18rem;">
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
+                <div class="card-body lato-regular">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">blah blah blah</p>
+                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                </div>
+              </div>
+            </div>
+            <div class = "col-md-3">
+              <div class="card" style="width: 18rem;">
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
+                <div class="card-body lato-regular">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">blah blah blah</p>
+                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                </div>
+              </div>
+            </div>
+            <div class = "col-md-3">
+              <div class="card" style="width: 18rem;">
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
+                <div class="card-body lato-regular">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">blah blah blah</p>
+                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                </div>
+              </div>
+            </div>
+            <div class = "col-md-3">
+              <div class="card" style="width: 18rem;">
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
+                <div class="card-body lato-regular">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">blah blah blah</p>
+                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Main content - Fresh Finds -->
+          <div class="row card-section">
+            <div class="col-md-12">
+              <h2 class="card-title mb-3 lato-bold">Fresh Finds</h2>
+            </div>
+            <div class = "col-md-3">
+              <div class="card" style="width: 18rem;">
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
+                <div class="card-body lato-regular">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">blah blah blah</p>
+                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                </div>
+              </div>
+            </div>
+            <div class = "col-md-3">
+              <div class="card" style="width: 18rem;">
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
+                <div class="card-body lato-regular">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">blah blah blah</p>
+                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                </div>
+              </div>
+            </div>
+            <div class = "col-md-3">
+              <div class="card" style="width: 18rem;">
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
+                <div class="card-body lato-regular">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">blah blah blah</p>
+                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                </div>
+              </div>
+            </div>
+            <div class = "col-md-3">
+              <div class="card" style="width: 18rem;">
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
+                <div class="card-body lato-regular">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">blah blah blah</p>
+                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Main content - Popular Now -->
+          <div class="row card-section">
+            <div class="col-md-12">
+              <h2 class="card-title mb-3 lato-bold">Classics</h2>
+            </div>
+            <div class = "col-md-3">
+              <div class="card" style="width: 18rem;">
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
+                <div class="card-body lato-regular">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">blah blah blah</p>
+                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                </div>
+              </div>
+            </div>
+            <div class = "col-md-3">
+              <div class="card" style="width: 18rem;">
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
+                <div class="card-body lato-regular">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">blah blah blah</p>
+                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                </div>
+              </div>
+            </div>
+            <div class = "col-md-3">
+              <div class="card" style="width: 18rem;">
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
+                <div class="card-body lato-regular">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">blah blah blah</p>
+                  <a href="#" class="btn btn-customcolor lato-regular">Add to Watchlist</a>
+                </div>
+              </div>
+            </div>
+            <div class = "col-md-3">
+              <div class="card" style="width: 18rem;">
+                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
+                <div class="card-body lato-regular">
+                  <h5 class="card-title">MOVIE NAME</h5>
+                  <p class="card-text">blah blah blah</p>
+                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        <!-- Footer -->
+        <div class="row lato-regular">
+            <div class="col-xs-12">
+                <hr>
+                <p>MOVIE APPLICATION</p>
+            </div>
+        </div>
     </div>
 
-
+    </div>
 </body>
 
 </html>
