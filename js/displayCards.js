@@ -71,6 +71,38 @@ function displayAdventure() {
     });
 }
 
+//function that fetches romance movies
+function displayRomance() {
+    fetch('/assets/imdb_top_1000.csv')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); 
+      movieData = data;
+    //   displayThisMovie(0);
+      displayRomanceRow();
+    })
+    .catch(error => {
+      // Handle any errors that occur during the fetch
+      console.error('Error fetching JSON:', error);
+    });
+}
+
+//function that fetches horror movies
+function displayHorror() {
+    fetch('/assets/imdb_top_1000.csv')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); 
+      movieData = data;
+    //   displayThisMovie(0);
+      displayHorrorRow();
+    })
+    .catch(error => {
+      // Handle any errors that occur during the fetch
+      console.error('Error fetching JSON:', error);
+    });
+}
+
 //function that fetches sci-fi movies
 function displaySciFi() {
     fetch('/assets/imdb_top_1000.csv')
@@ -370,6 +402,68 @@ function displaySciFiRow() {
         <div class="row card-section">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Sci-Fi Movies</h2>
+            </div>`;
+    displayThis = displayThis + rowDiv;
+
+    // Loop through filtered movies
+    filteredMovies.slice(0, 10).forEach(movie => {
+        const movieIndex = movieData.findIndex(m => m === movie); // Find index of movie in movieData
+        if (movieIndex !== -1) {
+            displayThis += displayThisMovie(movieIndex); // Pass index to displayThisMovie
+        }
+    });
+
+    // Creating row div end
+    const rowEnd = `</div>`;
+    displayThis += rowEnd;
+
+    // Displaying movies
+    document.getElementById("output").insertAdjacentHTML("beforebegin", displayThis);
+}
+
+function displayRomanceRow() {
+    let displayThis = '';
+
+    // Filter movies based on genre
+    const filteredMovies = movieData.filter(movie => movie.Genre.includes('Romance'));
+    console.log(filteredMovies);
+
+    // Creating row div start
+    const rowDiv = `
+        <div class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Romance Movies</h2>
+            </div>`;
+    displayThis = displayThis + rowDiv;
+
+    // Loop through filtered movies
+    filteredMovies.slice(0, 10).forEach(movie => {
+        const movieIndex = movieData.findIndex(m => m === movie); // Find index of movie in movieData
+        if (movieIndex !== -1) {
+            displayThis += displayThisMovie(movieIndex); // Pass index to displayThisMovie
+        }
+    });
+
+    // Creating row div end
+    const rowEnd = `</div>`;
+    displayThis += rowEnd;
+
+    // Displaying movies
+    document.getElementById("output").insertAdjacentHTML("beforebegin", displayThis);
+}
+
+function displayHorrorRow() {
+    let displayThis = '';
+
+    // Filter movies based on genre
+    const filteredMovies = movieData.filter(movie => movie.Genre.includes('Horror'));
+    console.log(filteredMovies);
+
+    // Creating row div start
+    const rowDiv = `
+        <div class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Horror Movies</h2>
             </div>`;
     displayThis = displayThis + rowDiv;
 

@@ -153,48 +153,10 @@
       <a href="#crime" onclick="displayCrime()">Crime</a>
       <a href="#adventure" onclick="displayAdventure()">Adventure</a>
       <a href="#sci-fi" onclick="displaySciFi()">Sci-Fi</a> 
-      <a href="#romance" onclick="showContent('romance')">Romance</a>
-      <a href="#horror" onclick="showContent('horror')">Horror</a>     
+      <a href="#romance" onclick="displayRomance()">Romance</a>
+      <a href="#horror" onclick="displayHorror()">Horror</a>     
     </div>
   </div>
-
-  <script>
-    // window.onload = function() {
-    //     // Call function to populate each content section
-    //     populateContent("dramaContent", displayDrama());
-    //     // Add more calls for other content sections if needed
-    // };
-
-    // function populateContent(contentId, displayFunction) {
-    //     var contentDiv = document.getElementById(contentId);
-    //     if (contentDiv) {
-    //         displayFunction(contentDiv);
-    //     }
-    // }
-
-
-</script>
-
-
-
-  
-
-
-    <!-- Filtered content -->
-    <!-- <div id="filteredContent" style="display: none;">
-        <div id="dramaContent" class="content"> 
-            <h2>Drama</h2>
-            <script>
-                window.onload = function() {
-                    displayDrama();
-                };
-            </script>
-        </div>
-        <div id="crimeContent" class="content"> 
-            <h2>Crime</h2>
-            <p> this is the crime content.</p>
-        </div>
-    </div> -->
 
 
     <div>
@@ -203,7 +165,7 @@
     </div>
 
     <!-- Original content -->
-    <!-- <div id="originalContent">
+    <div id="originalContent">
         <script>
             window.onload = function() {
                 displayPopularNow();
@@ -211,7 +173,7 @@
                 //displayClassics();
             };
         </script>
-    </div> -->
+    </div>
 
 
     <script>
@@ -227,38 +189,6 @@
             }
             }
         
-
-        function showContent(genre) {
-            // hide the original content and show the selected genre's content
-            document.getElementById("originalContent").style.display = "none";
-            document.getElementById("filteredContent").style.display = "block";
-
-            //Hide all genre content divs except the selected one
-            const contentDivs = document.querySelectorAll('.content');
-            contentDivs.forEach(div => {
-                if (div.id === genre + "Content") {
-                    div.style.display = "block";
-                }else {
-                    div.style.display = "none";
-                }
-            });
-            displayDrama();
-        }
-
-        function filterFunction() {
-            const input = document.getElementById("myInput");
-            const filter = input.value.toUpperCase();
-            const div = document.getElementById("myDropdown");
-            const a = div.getElementsByTagName("a");
-            for (let i = 0; i < a.length; i++) {
-                txtValue = a[i].textContent || a[i].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                a[i].style.display = "";
-                } else {
-                a[i].style.display = "none";
-                }
-            }
-        }
     </script>
 
 </body>
