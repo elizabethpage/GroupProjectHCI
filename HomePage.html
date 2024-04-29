@@ -16,6 +16,8 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/search.css">
+
 
     <!--Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,7 +74,6 @@
                             <div class="ms-auto">
                               <form id="searchForm" class="d-flex" onsubmit="handleSearchForm(this.querySelector('input[type=search]').value); return false;">
                                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn" type="submit">Search</button>
                               </form>
                             </div>
                         </div>
@@ -111,25 +112,6 @@
         }
     });
     </script>
-
-  <!-- CSS for search popup -->
-  <style>
-      /* CSS for the search popup */
-      .search-popup {
-          display: none;
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background-color: #fff;
-          border: 8px solid #5c5a5c;
-          padding: 20px;
-          width: 90vw; /* Set an absolute width (e.g., 90% of viewport width) */
-          max-height: 80vh;
-          overflow-y: auto;
-          z-index: 9999;
-      }
-  </style>
 
 
 
