@@ -86,7 +86,7 @@
       <!--Dropdown Button-->
       <style>
         .dropbtn {
-            background-color: #04AA6D;
+            background-color: #b97ce4d0;
             color: white;
             padding: 16px;
             font-size: 16px;
@@ -96,7 +96,7 @@
 
         /* Dropdown button on hover & focus */
         .dropbtn:hover, .dropbtn:focus {
-            background-color: #3e8e41;
+            background-color: #b165e7d0;
         }
 
         /* The search field */
@@ -149,62 +149,14 @@
 <div class="dropdown">
     <button onclick="toggleDropdown()" class="dropbtn">Genre</button>
     <div id="myDropdown" class="dropdown-content">
-      <a href="#drama" onclick="showContent('drama')">Drama</a>
-      <a href="#crime" onclick="showContent('crime')">Crime</a>
-      <a href="#action" onclick="showContent('action')">Action</a>
-      <a href="#adventure" onclick="showContent('adventure')">Adventure</a>
-      <a href="#biography" onclick="showContent('biography')">Biography</a>
-      <a href="#history" onclick="showContent('history')">History</a>
-      <a href="#sci-fi" onclick="showContent('sci-fi')">Sci-Fi</a> 
-      <a href="#romance" onclick="showContent('romance')">Romance</a>
-      <a href="#western" onclick="showContent('Western')">Western</a>
-      <a href="#fantasy" onclick="showContent('fantasy')">Fantasy</a>
-      <a href="#thriller" onclick="showContent('thriller')">Thriller</a>
-      <a href="#horror" onclick="showContent('horror')">Horror</a>     
+      <a href="#drama" onclick="displayDrama()">Drama</a>
+      <a href="#crime" onclick="displayCrime()">Crime</a>
+      <a href="#adventure" onclick="displayAdventure()">Adventure</a>
+      <a href="#sci-fi" onclick="displaySciFi()">Sci-Fi</a> 
+      <a href="#romance" onclick="displayRomance()">Romance</a>
+      <a href="#horror" onclick="displayHorror()">Horror</a>     
     </div>
   </div>
-
-  <script>
-    window.onload = function() {
-        // Call function to populate each content section
-        populateContent("dramaContent", displayDrama);
-        // Add more calls for other content sections if needed
-    };
-
-    function populateContent(contentId, displayFunction) {
-        var contentDiv = document.getElementById(contentId);
-        if (contentDiv) {
-            displayFunction(contentDiv);
-        }
-    }
-
-    function displayDrama(contentDiv) {
-        // Your logic to display drama content in the provided contentDiv
-        // For example:
-        contentDiv.innerHTML = "<p>This is the drama content.</p>";
-    }
-</script>
-
-
-
-  
-
-
-    <!-- Filtered content -->
-    <div id="filteredContent" style="display: none;">
-        <div id="dramaContent" class="content"> <!-- Drama content-->
-            <h2>Drama</h2>
-            <script>
-                window.onload = function() {
-                    displayDrama();
-                }
-            </script>
-        </div>
-        <div id="crimeContent" class="content"> <!-- Crime content-->
-            <h2>Crime</h2>
-            <p> this is the crime content.</p>
-        </div>
-    </div>
 
 
     <div>
@@ -218,7 +170,7 @@
             window.onload = function() {
                 displayPopularNow();
                 displayFreshFinds();
-                displayClassics();
+                //displayClassics();
             };
         </script>
     </div>
@@ -237,37 +189,6 @@
             }
             }
         
-
-        function showContent(genre) {
-            // hide the original content and show the selected genre's content
-            document.getElementById("originalContent").style.display = "none";
-            document.getElementById("filteredContent").style.display = "block";
-
-            //Hide all genre content divs except the selected one
-            const contentDivs = document.querySelectorAll('.content');
-            contentDivs.forEach(div => {
-                if (div.id === genre + "Content") {
-                    div.style.display = "block";
-                }else {
-                    div.style.display = "none";
-                }
-            });
-        }
-
-        function filterFunction() {
-            const input = document.getElementById("myInput");
-            const filter = input.value.toUpperCase();
-            const div = document.getElementById("myDropdown");
-            const a = div.getElementsByTagName("a");
-            for (let i = 0; i < a.length; i++) {
-                txtValue = a[i].textContent || a[i].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                a[i].style.display = "";
-                } else {
-                a[i].style.display = "none";
-                }
-            }
-        }
     </script>
 
 </body>
