@@ -10,11 +10,10 @@
 
     <!-- Bootstrap links to css and JavaScript-->
     <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="css/profile.css">
 
     <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/profile.js"></script>
-    
+    <script src="js/Profile.js"></script>
+
     <!--CSS-->
     <link rel="stylesheet" href="css/index.css">
 
@@ -33,13 +32,12 @@
                 <h1 class="lato-bold">Movie Application</h1>
             </div>
         </div>
-
-        <!-- Menu -->
+        <!--NavBar-->
         <div class="row">
             <div class="col-xs-12">
-                <nav class="navbar navbar-expand-lg navbar-customcolor">
+                <nav class="navbar navbar-expand-lg navbar-customcolor" style="border-radius: 0.375rem;">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="HomePage.html">Home</a>
+                        <a class="navbar-brand" href="#">Home</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -52,377 +50,178 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="Categories.html">Categories</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link active" href="Profile.html">Profile</a>
-                                </li>
-                            </ul>
-                          </div>
-                          <!-- Separate div for search bar aligned to the right -->
-                          <div class="ms-auto">
-                              <form class="d-flex">
-                                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                  <button class="btn" type="submit"></button>
-                              </form>
-                          </div>
-                      </div>
-                  </nav>
-              </div>
+                                
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="Profile.html">Profile</a>
+                                  </li>
+                                </ul>
+                              </div>
+                            <!-- Separate div for search bar aligned to the right -->
+                            <div class="ms-auto">
+                                <form class="d-flex">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn" type="submit"></button>
+                                </form>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        
+        <!--Profile-->
+        <div id="profileInfo" class="row">
+            <span class="card" style="width: 18rem; height:18rem; margin-top: 4rem; margin-bottom: 4rem; margin-left: 4rem;">
+                <img class="card-img-top" src="assets/profileIMG.jpg" alt="Card image cap">
+            </span>
+            <span class="card" style="width: 18rem; height:18rem; border:none; margin-left:4rem; margin-top: 8rem;">
+                <h5 class="card-title" style="margin-bottom: 1rem;">User500293</h5>
+                <p class="card-text" style="margin-bottom: 0rem;">Joined 4/29/2024</p>
+                <p class="card-text">Watched: 20 films.</p>
+            </span>
+        </div>
+
+        <!-- Main content -->
+        <div class="row">
+
+          <!-- Main content - Want to Watch -->
+          <div class="row card-section">
+            <div class="col-md-12">
+              <h2 class="card-title mb-3 lato-bold">Want to Watch</h2>
+            </div>
+            <div id="wantRow" class="row">
+                <div class = "col-md-3">
+                <div class="card col-md-3" style="width: 18rem;" id="wantCard1">
+                    <img src="assets/breakfastclub.jpg" class="card-img-top" alt="...">
+                    <div class="card-body lato-regular">
+                    <h5 class="card-title">The Breakfast Club</h5>
+                    <p class="card-text">Five high school students meet in Saturday detention and discover how they have a lot more in common than they thought.</p>
+                    <button id="wantMoveButton1" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
+                    <button id="wantDeleteButton1" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
+                    </div>
+                </div>
+                </div>
+                <div class = "col-md-3">
+                <div class="card" style="width: 18rem;" id="wantCard2">
+                    <img src="assets/titanic.jpg" class="card-img-top" alt="...">
+                    <div class="card-body lato-regular">
+                    <h5 class="card-title">Titanic</h5>
+                    <p class="card-text">A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.</p>
+                    <button id="wantMoveButton2" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
+                    <button id="wantDeleteButton2" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!--Add to List-->
+                <!-- Button trigger modal -->
+                <div class="row">
+                    <button type="button" class="btn btn-customcolor lato-regular" data-bs-toggle="modal" data-bs-target="#wantModal">
+                        Add to List
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade modal-lg loto-regular" id="wantModal" tabindex="-1" aria-labelledby="wantModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="wantModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="wantForm" method="POST">
+                                    <div class="container container-lg">
+                                    <div class="mb-3">
+                                    <label for="wantTitle" class="form-label">Title:</label>
+                                    <input type="text" class="form-control" id="wantTitle" aria-describedby="title">
+                                    </div>
+                                    <div class="mb-3">
+                                    <label for="wantContent" class="form-label">Notes:</label>
+                                    <input type="text" class="form-control" id="wantContent">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-customcolor" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-customcolor" onclick="addToWant()">Add to List</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
           </div>
 
-<!--Profile-->
-<div class="row">
-    <span class="card" style="width: 18rem; height:18rem;">
-        <img class="card-img-top" src="assets/profileIMG.jpg" alt="Card image cap">
-    </span>
-        <span class="card" style="width: 18rem; height:18rem; border:none; margin-left:0rem;">
-            <h5 id="title" class="card-title">BIO</h5>
-            <p id="content" class="card-text">This user watched 20 films.</p>
-        </span>
-</div>
 
+          <!-- Main content - Watched -->
+          <div class="row card-section">
+            <div class="col-md-12">
+              <h2 class="card-title mb-3 lato-bold">Watched</h2>
+            </div>
+            <div id="watchedRow" class="row">
+                <div class = "col-md-3">
+                <div class="card" style="width: 18rem;" id="watchedCard1">
+                    <img src="assets/getout.jpg" class="card-img-top" alt="...">
+                    <div class="card-body lato-regular">
+                    <h5 class="card-title">Get Out</h5>
+                    <p class="card-text">A young African-American visits his white girlfriend's parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.</p>
+                    <p class="placeholder"></p>
+                    <button id="watchedDeleteButton1" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
+                    </div>
+                </div>
+                </div>
+            </div>
 
-<!--Watchlist-->
-    <div class="row">
-        <header>
-            <div class="col-xs-12">
-                <h2>Watchlist</h2>
-            </div>
-          </header>  
-          <main>
-            <div id="carouselExampleControls" class="carousel slide" data-interval="false">
-                <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="card-wrapper">
-                        <div class="card" id="card1" >
-                            <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                            <div class="card-body lato-regular">
-                              <h5 id="title" class="card-title">MOVIE NAME</h5>
-                              <p id="content" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <button id="moveButton1" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
-                              <button id="deleteButton1" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                            </div>
-                        </div>
-                        <div class="card" id="card2" >
-                            <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                            <div id="cardBody" class="card-body">
-                              <h5 id="title" class="card-title">MOVIE NAME</h5>
-                              <p id="content" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <button id="moveButton2" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
-                              <button id="deleteButton2" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                            </div>
-                        </div>
-                        <div class="card" id="card3" >
-                            <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                            <div class="card-body lato-regular">
-                              <h5 id="title" class="card-title">MOVIE NAME</h5>
-                              <p id="content" class="card-text">Someererthe card title and make up the bulk of the card's content.</p>
-                              <button id="moveButton3" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
-                              <button id="deleteButton3" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                            </div>
-                        </div>
-                        <div class="card" id="card4" >
-                            <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                            <div class="card-body lato-regular">
-                              <h5 class="card-title">MOVIE NAME</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <button id="moveButton4" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
-                              <button id="deleteButton4" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="card-wrapper">
-                        <div class="card" id="card5" >
-                            <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                            <div class="card-body lato-regular">
-                              <h5 class="card-title">MOVIE NAME</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <button id="moveButton5" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
-                              <button id="deleteButton5" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                            </div>
-                        </div>
-                        <div class="card" id="card6" >
-                            <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                            <div class="card-body lato-regular">
-                              <h5 class="card-title">MOVIE NAME</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <button id="moveButton6" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
-                              <button id="deleteButton6" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                            </div>
-                        </div>
-                        <!--start adding next card here-->
-                        <span id="carouselItem2"></span>
-                    </div>
-                </div>
-                <!--for next row create new carousel item and card wrapper class, start adding elements in-->
-                <span id="newCarouselItem"></span>
-        
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </main>
-          
-
-    <!-- Add to List -->
-        <!-- Button trigger modal -->
-    <div class="row">
-        <button type="button" class="btn btn-customcolor" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Add to List
-        </button>
-        
-        <!-- Modal -->
-        <div class="modal fade modal-lg loto-regular" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="addBlog" method="POST">
-                        <div class="container container-lg">
-                        <div class="mb-3">
-                          <label for="title" class="form-label">Title:</label>
-                          <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                          <label for="content" class="form-label">Notes:</label>
-                          <input type="text" class="form-control" id="content">
-                        </div>
-                        <!-- <div class="mb-3">
-                            <label for="User" class="form-label">Created By :</label>
-                            <input type="text" class="form-control" id="username">
-                          </div> -->
-                        
-                      </form>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-customcolor" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-customcolor" onclick="addToList()">Add to List</button>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
-
-<!--Watched-->
-<div class="row">
-    <header>
-        <div class="col-xs-12">
-            <h2>Watched</h2>
-        </div>
-      </header>  
-      <main>
-        <div id="carousel2" class="carousel slide" data-interval="false">
-            <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="card-wrapper">
-                    <div class="card" id="card7" >
-                        <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                        <div class="card-body lato-regular">
-                          <h5 class="card-title">MOVIE NAME</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <p class="placeholder"></p>
-                          <button id="deleteButton7" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                        </div>
-                    </div>
-                    <div class="card" id="card8" >
-                        <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                        <div class="card-body lato-regular">
-                          <h5 class="card-title">MOVIE NAME</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <p class="placeholder"></p>
-                          <button id="deleteButton8" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                        </div>
-                    </div>
-                    <div class="card" id="card9" >
-                        <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                        <div class="card-body lato-regular">
-                          <h5 class="card-title">MOVIE NAME</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <p class="placeholder"></p>
-                          <button id="deleteButton9" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                        </div>
-                    </div>
-                    <div class="card" id="card10" >
-                        <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                        <div class="card-body lato-regular">
-                          <h5 class="card-title">MOVIE NAME</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <p class="placeholder"></p>
-                          <button id="deleteButton10" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="card-wrapper">
-                    <div class="card" id="card11" >
-                        <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                        <div class="card-body lato-regular">
-                          <h5 class="card-title">MOVIE NAME</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <p class="placeholder"></p>
-                          <button id="deleteButton11" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                        </div>
-                    </div>
-                    <div class="card" id="card12" >
-                        <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                        <div class="card-body lato-regular">
-                          <h5 class="card-title">MOVIE NAME</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <p class="placeholder"></p>
-                          <button id="deleteButton12" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                        </div>
-                    </div>
-                    <!--start adding next card here-->
-                    <div id="carouselItem3"></div>
-                </div>
-            </div>
-    
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </main>
-      
-
-<!--Add to List-->
-    <!-- Button trigger modal -->
-<div class="row">
-    <button type="button" class="btn btn-customcolor lato-regular" data-bs-toggle="modal" data-bs-target="#exampleModal2">
-        Add to List
-    </button>
-    
-    <!-- Modal -->
-    <div class="modal fade modal-lg loto-regular" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="addBlog2" method="POST">
-                    <div class="container container-lg">
-                    <div class="mb-3">
-                      <label for="title" class="form-label">Title:</label>
-                      <input type="text" class="form-control" id="title2" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                      <label for="content" class="form-label">Notes:</label>
-                      <input type="text" class="form-control" id="content2">
-                    </div>
-                    <!-- <div class="mb-3">
-                        <label for="User" class="form-label">Created By :</label>
-                        <input type="text" class="form-control" id="username">
-                      </div> -->
+            <!--Add to List-->
+                <!-- Button trigger modal -->
+                <div class="row">
+                    <button type="button" class="btn btn-customcolor lato-regular" data-bs-toggle="modal" data-bs-target="#watchedModal">
+                        Add to List
+                    </button>
                     
-                  </form>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-customcolor" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-customcolor" onclick="addToList2()">Add to List</button>
-            </div>
-        </div>
-        </div>
-    </div>
-</div>
+                    <!-- Modal -->
+                    <div class="modal fade modal-lg loto-regular" id="watchedModal" tabindex="-1" aria-labelledby="watchedModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="watchedModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="watchedForm" method="POST">
+                                    <div class="container container-lg">
+                                    <div class="mb-3">
+                                    <label for="wantTitle" class="form-label">Title:</label>
+                                    <input type="text" class="form-control" id="watchedTitle" aria-describedby="title">
+                                    </div>
+                                    <div class="mb-3">
+                                    <label for="wantContent" class="form-label">Notes:</label>
+                                    <input type="text" class="form-control" id="watchedContent">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-customcolor" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-customcolor" onclick="addToWatched()">Add to List</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
 
+          </div>
 
-<!--Custom Lists-->
-<div class="row">
-    <header>
-        <div class="col-xs-12">
-            <h2 class="lato-regular">Lists</h2>
-        </div>
-      </header>  
-      <main>
-<!-- Tab bar-->
-<ul class="nav nav-tabs lato-regular" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="Y2K-tab" data-bs-toggle="tab" data-bs-target="#Y2K-tab-pane" type="button" role="tab" aria-controls="Y2K-tab-pane" aria-selected="true">Favorites</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="chickflick-tab" data-bs-toggle="tab" data-bs-target="#chickflick-tab-pane" type="button" role="tab" aria-controls="chickflick-tab" aria-selected="false">Family Movies</button>
-    </li>
-  </ul>
-  <div class="tab-content" id="myTabContent">
-    
-    <!-- Y2K filter-->
-    <div class="tab-pane fade show active" id="Y2K-tab-pane" role="tabpanel" aria-labelledby="Y2K-tab" tabindex="0">
-        <div class="row">
-            <div class="col-md-12">
-              <h3 class="card-title mb-3">Favorites</h3>
-            </div>
-            <div class="card" id="card13" >
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <button id="deleteButton13" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                </div>
-            </div>
-            <div class="card" id="card13" >
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <button id="deleteButton13" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                </div>
-            </div>
-        </div>
-          
-    </div>
-
-    <!-- Chick Flicks filter -->
-    <div class="tab-pane fade" id="chickflick-tab-pane" role="tabpanel" aria-labelledby="chickflick-tab" tabindex="0">
-        <div class="row">
-            <div class="col-md-12">
-              <h3 class="card-title mb-3">Family Movies</h3>
-            </div>
-            <div class="card" id="card14" >
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <button id="deleteButton14" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                </div>
-            </div>
-            <div class="card" id="card14" >
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="movieImg">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <button id="deleteButton14" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
-                </div>
+        <!-- Footer -->
+        <div class="row lato-regular">
+            <div class="col-xs-12">
+                <hr>
+                <p>MOVIE APPLICATION</p>
             </div>
         </div>
     </div>
-  </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-    <div>
-        <footer>
-            Movie Application
-        </footer>
     </div>
+</body>
 
-    </body>
 </html>
