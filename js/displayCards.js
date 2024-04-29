@@ -185,34 +185,6 @@ function displayClassicsrow(){
 }
 
 
-    // Function to display search results
-    function displaySearchResults(searchResults) {
-        let displayThis = '';
-
-        // Creating row div start
-        const rowDiv = `<div class="row card-section">`;
-        displayThis += rowDiv;
-
-        // Loop through search results
-        searchResults.forEach(movie => {
-            displayThis += displayThisMovie(movie);
-        });
-
-        // Creating row div end
-        const rowEnd = `</div>`;
-        displayThis += rowEnd;
-
-        // Displaying movies
-        document.getElementById("output").innerHTML = displayThis;
-    }
-
-    // Function to handle search
-    function handleSearch(searchTerm) {
-        const searchTermLower = searchTerm.toLowerCase();
-        const searchResults = movieData.filter(movie => movie.Series_Title.toLowerCase().includes(searchTermLower));
-        displaySearchResults(searchResults);
-    }
-
 
 
 function displayDramaRow() {
@@ -245,4 +217,43 @@ function displayDramaRow() {
     // Displaying movies
     document.getElementById("output").insertAdjacentHTML("beforebegin", displayThis);
 }
+
+
+// Function to display search results as movie cards
+function displaySearchResults(searchResults) {
+    let displayThis = '';
+
+    // Creating row div start
+    const rowDiv = `<div class="row card-section">`;
+    displayThis += rowDiv;
+
+    // Loop through search results
+    searchResults.forEach(movie => {
+        // Get the index of the movie in the dataset
+        const movieIndex = movieData.findIndex(m => m.Series_Title === movie.Series_Title);
+        if (movieIndex !== -1) {
+            displayThis += displayThisMovie(movieIndex); // Pass index to displayThisMovie
+        }
+    });
+
+    // Creating row div end
+    const rowEnd = `</div>`;
+    displayThis += rowEnd;
+
+    // Displaying movies in the search popup
+    const searchPopup = document.getElementById('searchPopup');
+    searchPopup.innerHTML = displayThis;
+    searchPopup.style.display = 'block'; // Show the popup
+}
+
+
+// Function to handle search
+function handleSearch(searchTerm) {
+    const searchTermLower = searchTerm.toLowerCase();
+    const searchResults = movieData.filter(movie => movie.Series_Title.toLowerCase().includes(searchTermLower));
+    displaySearchResults(searchResults);
+}
+
+// JavaScript for closing the search popup
+
 
