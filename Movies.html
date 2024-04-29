@@ -149,8 +149,8 @@
 <div class="dropdown">
     <button onclick="toggleDropdown()" class="dropbtn">Genre</button>
     <div id="myDropdown" class="dropdown-content">
-      <a href="#drama" onclick="displayDrama()">Drama</a>
-      <a href="#crime" onclick="displayCrime()">Crime</a>
+      <a href="#drama" onclick="displayGenre('drama')">Drama</a>
+      <a href="#crime" onclick="displayGenre('crime')">Crime</a>
       <a href="#adventure" onclick="displayAdventure()">Adventure</a>
       <a href="#sci-fi" onclick="displaySciFi()">Sci-Fi</a> 
       <a href="#romance" onclick="displayRomance()">Romance</a>
@@ -168,26 +168,70 @@
     <div id="originalContent">
         <script>
             window.onload = function() {
-                displayPopularNow();
-                displayFreshFinds();
+                displayOriginalContent();
+                // displayPopularNow();
+                // displayFreshFinds();
                 //displayClassics();
             };
+
+            function displayOriginalContent() {
+                // show original content and hide genre-specific content
+                document.getElementById("originalContent").style.display = "block";
+                document.getElementById("output").innerHTML = "";
+
+                //call functions to display original content
+                displayPopularNow();
+                displayFreshFinds();
+
+                //hide any genre-specific content
+                hideGenre(selectedGenre);
+                selectedGenre = null; // reset selected genre
+            }
+
         </script>
     </div>
 
 
     <script>
+
+        var selectedGenre = null; 
+
+        function displayGenre(genre) {
+            // hide original content
+            document.getElementById("originalContent").style.display = "none";
+
+            // hide previous genre-specific content if any
+            if (selectedGenre) {
+                hideGenre(selectedGenre);
+            }
+
+            // Display the selected genre's content
+            window["display" + genre.charAt(0).toUpperCase() + genre.slice(1)]();
+
+            // update selected genre
+            selectedGenre = genre;
+        }
+
         /* when the user clicks on the button, toggle between hiding and showing the dropdown content */
 
         function toggleDropdown() {
             var dropdownContent = document.getElementById("myDropdown");
-            console.log("Dropdown clicked")
-            if (dropdownContent.style.display === "none") {
+            if (dropdownContent.style.display === "none" || dropdownContent.style.display === "")  {
                 dropdownContent.style.display = "block";
             } else {
                 dropdownContent.style.display = "none";
             }
+        }
+
+        function hideGenre(genre) {
+            if (genre) {
+                window["hide" + genre.charAt(0).toUpperCase() + genre.slice(1)]();
             }
+        }
+        
+    </script>
+
+    <script>
         
     </script>
 
