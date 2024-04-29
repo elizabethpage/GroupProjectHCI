@@ -1,6 +1,15 @@
 //global movieData variable
 let movieData = null;
 
+document.addEventListener('DOMContentLoaded', function() {
+    var printButton = document.getElementById('printButton');
+    printButton.addEventListener('click', printFile);
+});
+
+
+
+
+
 //function that fetches data and calls all the other functions needed for the page
 function display() {
     fetch('/assets/imdb_top_1000.csv')
@@ -42,7 +51,6 @@ function displayThisMovie(movieArrNum) {
         </div>
     </div>`;
     return movieCard;
-    // document.getElementById("output").insertAdjacentHTML("beforebegin", movieCard);
 }
 
 function displayRow(){
@@ -54,20 +62,8 @@ function displayRow(){
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Classics</h2>
             </div>`;
-    displayThis = displayThis + rowDiv
+    }
+    document.getElementById("output").insertAdjacentHTML("beforeend", movieCatalog);
 
-    //loop through movies we want in the row
-    for (let i = 0; i < 10; i++) {
-        displayThis = displayThis + displayThisMovie(i);
-      }
-    
-    //creating row div end
-    const rowEnd = `
-    </div>`
-    displayThis = displayThis + rowEnd;
-
-    //displaying movies
-    document.getElementById("output").insertAdjacentHTML("beforebegin", displayThis);
-}
-
+    return movieCatalog;
 
