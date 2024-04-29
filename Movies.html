@@ -22,14 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
-    <!--JavaScript for calling displayPopularNow and displayFreshFinds-->
-    <script>
-      window.onload = function() {
-          displayPopularNow();
-          displayFreshFinds();
-          displayClassics();
-      };
-  </script>
+
 
 </head>
 
@@ -87,11 +80,194 @@
         <h2 class="card-title mb-3 lato-bold">Movies</h2>
       </div>
 
-    <div>
-      <!-- <button type="button" class="btn btn-primary" onclick='display()'>Primary</button> -->
-     <pre id="output"></pre>
+
+      
+
+      <!--Dropdown Button-->
+      <style>
+        .dropbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Dropdown button on hover & focus */
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #3e8e41;
+        }
+
+        /* The search field */
+        #myInput {
+            box-sizing: border-box;
+            background-position: 14px 12px;
+            background-repeat: no-repeat;
+            font-size: 16px;
+            padding: 14px 20px 12px 45px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* The search field when it gets focus/clicked on */
+        #myInput:focus {outline: 3px solid #ddd;}
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f6f6f6;
+            min-width: 230px;
+            border: 1px solid #ddd;
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+        .show {display:block;}
+</style>
+
+<!-- Filter button-->
+
+<div class="dropdown">
+    <button onclick="toggleDropdown()" class="dropbtn">Genre</button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="#drama" onclick="showContent('drama')">Drama</a>
+      <a href="#crime" onclick="showContent('crime')">Crime</a>
+      <a href="#action" onclick="showContent('action')">Action</a>
+      <a href="#adventure" onclick="showContent('adventure')">Adventure</a>
+      <a href="#biography" onclick="showContent('biography')">Biography</a>
+      <a href="#history" onclick="showContent('history')">History</a>
+      <a href="#sci-fi" onclick="showContent('sci-fi')">Sci-Fi</a> 
+      <a href="#romance" onclick="showContent('romance')">Romance</a>
+      <a href="#western" onclick="showContent('Western')">Western</a>
+      <a href="#fantasy" onclick="showContent('fantasy')">Fantasy</a>
+      <a href="#thriller" onclick="showContent('thriller')">Thriller</a>
+      <a href="#horror" onclick="showContent('horror')">Horror</a>     
+    </div>
+  </div>
+
+  <script>
+    window.onload = function() {
+        // Call function to populate each content section
+        populateContent("dramaContent", displayDrama);
+        // Add more calls for other content sections if needed
+    };
+
+    function populateContent(contentId, displayFunction) {
+        var contentDiv = document.getElementById(contentId);
+        if (contentDiv) {
+            displayFunction(contentDiv);
+        }
+    }
+
+    function displayDrama(contentDiv) {
+        // Your logic to display drama content in the provided contentDiv
+        // For example:
+        contentDiv.innerHTML = "<p>This is the drama content.</p>";
+    }
+</script>
+
+
+
+  
+
+
+    <!-- Filtered content -->
+    <div id="filteredContent" style="display: none;">
+        <div id="dramaContent" class="content"> <!-- Drama content-->
+            <h2>Drama</h2>
+            <script>
+                window.onload = function() {
+                    displayDrama();
+                }
+            </script>
+        </div>
+        <div id="crimeContent" class="content"> <!-- Crime content-->
+            <h2>Crime</h2>
+            <p> this is the crime content.</p>
+        </div>
     </div>
 
+    <div> 
+        <!-- <button type="button" class="btn btn-primary" onclick='display()'>Primary</button> -->
+       <pre id="output"></pre>
+    </div>
+
+    <!-- Original content -->
+    <div id="originalContent">
+        <script>
+            window.onload = function() {
+                displayPopularNow();
+                displayFreshFinds();
+                displayClassics();
+            };
+        </script>
+    </div>
+
+
+    <script>
+        /* when the user clicks on the button, toggle between hiding and showing the dropdown content */
+
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("myDropdown");
+            console.log("Dropdown clicked")
+            if (dropdownContent.style.display === "none") {
+                dropdownContent.style.display = "block";
+            } else {
+                dropdownContent.style.display = "none";
+            }
+            }
+        
+
+        function showContent(genre) {
+            // hide the original content and show the selected genre's content
+            document.getElementById("originalContent").style.display = "none";
+            document.getElementById("filteredContent").style.display = "block";
+
+            //Hide all genre content divs except the selected one
+            const contentDivs = document.querySelectorAll('.content');
+            contentDivs.forEach(div => {
+                if (div.id === genre + "Content") {
+                    div.style.display = "block";
+                }else {
+                    div.style.display = "none";
+                }
+            });
+        }
+
+        function filterFunction() {
+            const input = document.getElementById("myInput");
+            const filter = input.value.toUpperCase();
+            const div = document.getElementById("myDropdown");
+            const a = div.getElementsByTagName("a");
+            for (let i = 0; i < a.length; i++) {
+                txtValue = a[i].textContent || a[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+                } else {
+                a[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 
 </body>
 
