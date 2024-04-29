@@ -169,6 +169,33 @@ function displayClassicsrow(){
 }
 
 
+    // Function to display search results
+    function displaySearchResults(searchResults) {
+        let displayThis = '';
+
+        // Creating row div start
+        const rowDiv = `<div class="row card-section">`;
+        displayThis += rowDiv;
+
+        // Loop through search results
+        searchResults.forEach(movie => {
+            displayThis += displayThisMovie(movie);
+        });
+
+        // Creating row div end
+        const rowEnd = `</div>`;
+        displayThis += rowEnd;
+
+        // Displaying movies
+        document.getElementById("output").innerHTML = displayThis;
+    }
+
+    // Function to handle search
+    function handleSearch(searchTerm) {
+        const searchTermLower = searchTerm.toLowerCase();
+        const searchResults = movieData.filter(movie => movie.Series_Title.toLowerCase().includes(searchTermLower));
+        displaySearchResults(searchResults);
+    }
 
 
 
