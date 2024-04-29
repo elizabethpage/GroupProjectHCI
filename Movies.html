@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
 
     <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/displayCards.js"></script>
 
     <!--CSS-->
     <link rel="stylesheet" href="css/index.css">
@@ -20,6 +21,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!--JavaScript for calling displayPopularNow and displayFreshFinds-->
+    <script>
+      window.onload = function() {
+          displayPopularNow();
+          displayFreshFinds();
+          displayClassics();
+      };
+  </script>
 
 </head>
 
@@ -48,9 +58,6 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav lato-regular">
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="TVShows.html">TV Shows</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link active" href="Movies.html">Movies</a>
                                 </li>
                                 <li class="nav-item">
@@ -73,172 +80,103 @@
                     </nav>
                 </div>
             </div>
+    </class>
+
+    <div class="row card-section">
+      <div class="col-md-12">
+        <h2 class="card-title mb-3 lato-bold">Movies</h2>
+      </div>
 
 
-          <!-- Main content -->
-          <div class="row card-section">
-            <div class="col-md-12">
-              <h2 class="card-title mb-3 lato-bold">Movies</h2>
-            </div>
-          
+      <!-- Filter button-->
 
-          <!-- Main content - Popular Now -->
-          <div class="row card-section">
-            <div class="col-md-12">
-              <h2 class="card-title mb-3 lato-bold">Popular Now</h2>
-            </div>
-            <div class = "col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">blah blah blah</p>
-                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
-                </div>
-              </div>
-            </div>
-            <div class = "col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">blah blah blah</p>
-                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
-                </div>
-              </div>
-            </div>
-            <div class = "col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">blah blah blah</p>
-                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
-                </div>
-              </div>
-            </div>
-            <div class = "col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">blah blah blah</p>
-                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- Main content - Fresh Finds -->
-          <div class="row card-section">
-            <div class="col-md-12">
-              <h2 class="card-title mb-3 lato-bold">Fresh Finds</h2>
-            </div>
-            <div class = "col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">blah blah blah</p>
-                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
-                </div>
-              </div>
-            </div>
-            <div class = "col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">blah blah blah</p>
-                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
-                </div>
-              </div>
-            </div>
-            <div class = "col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">blah blah blah</p>
-                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
-                </div>
-              </div>
-            </div>
-            <div class = "col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">blah blah blah</p>
-                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- Main content - Popular Now -->
-          <div class="row card-section">
-            <div class="col-md-12">
-              <h2 class="card-title mb-3 lato-bold">Classics</h2>
-            </div>
-            <div class = "col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">blah blah blah</p>
-                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
-                </div>
-              </div>
-            </div>
-            <div class = "col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">blah blah blah</p>
-                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
-                </div>
-              </div>
-            </div>
-            <div class = "col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">blah blah blah</p>
-                  <a href="#" class="btn btn-customcolor lato-regular">Add to Watchlist</a>
-                </div>
-              </div>
-            </div>
-            <div class = "col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="assets/barbiemovieposter.jpeg" class="card-img-top" alt="...">
-                <div class="card-body lato-regular">
-                  <h5 class="card-title">MOVIE NAME</h5>
-                  <p class="card-text">blah blah blah</p>
-                  <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-        <!-- Footer -->
-        <div class="row lato-regular">
-            <div class="col-xs-12">
-                <hr>
-                <p>MOVIE APPLICATION</p>
-            </div>
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Genre</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="#drama">Drama</a>
+          <a href="#crime">Crime</a>
+          <a href="#action">Action</a>
+          <a href="#adventure">Adventure</a>
+          <a href="#biography">Biography</a>
+          <a href="#history">History</a>
+          <a href="#sci-fi">Sci-Fi</a>
         </div>
+      </div>
+
+      <!--Dropdown Button-->
+      <style>
+        .dropbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Dropdown button on hover & focus */
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #3e8e41;
+        }
+
+        /* The search field */
+        #myInput {
+            box-sizing: border-box;
+            background-image: url('searchicon.png');
+            background-position: 14px 12px;
+            background-repeat: no-repeat;
+            font-size: 16px;
+            padding: 14px 20px 12px 45px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* The search field when it gets focus/clicked on */
+        #myInput:focus {outline: 3px solid #ddd;}
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f6f6f6;
+            min-width: 230px;
+            border: 1px solid #ddd;
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+        .show {display:block;}
+</style>
+
+    <div>
+      <!-- <button type="button" class="btn btn-primary" onclick='display()'>Primary</button> -->
+     <pre id="output"></pre>
     </div>
 
-    </div>
+
 </body>
 
 </html>
+
+
+
 
 
 

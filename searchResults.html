@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -11,7 +12,8 @@
     <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
 
     <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/loadData.js"></script>
+    <script src="js/displayCards.js"></script>
+    <script src="js/searchBar.js"></script>
 
     <!--CSS-->
     <link rel="stylesheet" href="css/index.css">
@@ -23,7 +25,7 @@
 
 </head>
 
-<body onload="display()">
+<body>
     <class class="container">
         <!-- Title -->
         <div class="row">
@@ -31,6 +33,9 @@
                 <h1 class="lato-bold">Movie Application</h1>
             </div>
         </div>
+
+
+
 
         <div class="row">
             <div class="col-xs-12">
@@ -45,22 +50,17 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav lato-regular">
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="TVShows.html">TV Shows</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" href="Movies.html">Movies</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="Categories.html">Categories</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="Profile.html">Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="Data.html">Data</a>
+                                
                                   </li>
-                              </ul>
-                            </div>
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="Profile.html">Profile</a>
+                                  </li>
+                                </ul>
+                              </div>
                             <!-- Separate div for search bar aligned to the right -->
                             <div class="ms-auto">
                                 <form class="d-flex">
@@ -75,7 +75,7 @@
     </class>
 
     <div>
-        <!-- <button type="button" class="btn btn-primary" onclick='display()'>Primary</button> -->
+        <button type="button" class="btn btn-primary" onclick='display()'>Primary</button>
         <pre id="output"></pre>
     </div>
 
