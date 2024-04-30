@@ -13,9 +13,11 @@
 
     <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/displayCards.js"></script>
+    <script src="js/movies.js"></script>
 
     <!--CSS-->
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/movies.css">
 
     <!--Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,10 +34,6 @@
                 <h1 class="lato-bold">Movie Application</h1>
             </div>
         </div>
-
-
-
-
         <div class="row">
             <div class="col-xs-12">
                 <nav class="navbar navbar-expand-lg navbar-customcolor" style="border-radius: 0.375rem;">
@@ -59,176 +57,1478 @@
                   
                                 </li>
                               </ul>
-                            </div>
-                            
                         </div>
-                    </nav>
-                </div>
+                    </div>
+                </nav>
             </div>
-    </class>
+        </div>
 
     <div class="row card-section">
       <div class="col-md-12">
         <h2 class="card-title mb-3 lato-bold">Movies</h2>
       </div>
 
-
-      
-
-      <!--Dropdown Button-->
-      <style>
-        .dropbtn {
-            background-color: #b97ce4d0;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* Dropdown button on hover & focus */
-        .dropbtn:hover, .dropbtn:focus {
-            background-color: #b165e7d0;
-        }
-
-        /* The search field */
-        #myInput {
-            box-sizing: border-box;
-            background-position: 14px 12px;
-            background-repeat: no-repeat;
-            font-size: 16px;
-            padding: 14px 20px 12px 45px;
-            border: none;
-            border-bottom: 1px solid #ddd;
-        }
-
-        /* The search field when it gets focus/clicked on */
-        #myInput:focus {outline: 3px solid #ddd;}
-
-        /* The container <div> - needed to position the dropdown content */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Dropdown Content (Hidden by Default) */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f6f6f6;
-            min-width: 230px;
-            border: 1px solid #ddd;
-            z-index: 1;
-        }
-
-        /* Links inside the dropdown */
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        /* Change color of dropdown links on hover */
-        .dropdown-content a:hover {background-color: #f1f1f1}
-
-        /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-        .show {display:block;}
-</style>
-
-<!-- Filter button for Genre-->
-
+<!-- Filter button for Filters-->
   <div class="dropdown">
     <button onclick="toggleDropdown()" class="dropbtn">Genre</button>
     <div id="myDropdown" class="dropdown-content">
         <label><input type="checkbox" value="drama" onchange="updateGenreDisplay('drama')">Drama</label><br>
-        <label><input type="checkbox" value="crime" onchange="updateGenreDisplay('crime')">Crime</label><br>
-        <label><input type="checkbox" value="adventure" onchange="updateGenreDisplay('adventure')">Adventure</label><br>
-        <label><input type="checkbox" value="sci-fi" onchange="updateGenreDisplay('sci-fi')">Sci-Fi</label><br>
-        <label><input type="checkbox" value="romance" onchange="updateGenreDisplay('romance')">Romance</label><br>
-        <label><input type="checkbox" value="horror" onchange="updateGenreDisplay('horror')">Horror</label><br>
+        <label><input  type="checkbox" value="crime" onchange="updateGenreDisplay('crime')">Crime</label><br>
+        <label><input class="filterlinks" type="checkbox" value="adventure" onchange="updateGenreDisplay('adventure')">Adventure</label><br>
+        <label><input class="filterlinks" type="checkbox" value="sci-fi" onchange="updateGenreDisplay('sci-fi')">Sci-Fi</label><br>
+        <label><input class="filterlinks" type="checkbox" value="romance" onchange="updateGenreDisplay('romance')">Romance</label><br>
+        <label><input class="filterlinks" type="checkbox" value="horror" onchange="updateGenreDisplay('horror')">Horror</label><br>
     </div>
   </div>
-
   <div class="dropdown" style="margin-left: 500px">
     <button onclick="toggleRatingDropdown()" class="dropbtn">Rating</button>
     <div id="ratingDropdown" class="dropdown-content">
-        <label><input type="checkbox" value="greaternine" onchange=displayAboveNine()>9+</label><br>
-        <label><input type="checkbox" value="eightnine" onchange=displayEightNine()>8-9</label><br>
-        <label><input type="checkbox" value="seveneight" onchange=displaySevenEight()>7-8</label><br>
+        <label><input type="checkbox" value="greaternine" onchange="updateGenreDisplay('abovenine')">9+</label><br>
+        <label><input type="checkbox" value="eightnine" onchange="updateGenreDisplay('eightnine')">8-9</label><br>
+        <label><input type="checkbox" value="seveneight" onchange="updateGenreDisplay('seveneight')">7-8</label><br>
     </div>
   </div>
-
   <div class="dropdown" style="margin-left: 1000px">
     <button onclick="toggleAgeRatingDropdown()" class="dropbtn">Age Rating</button>
     <div id="ageRatingDropdown" class="dropdown-content">
-        <label><input type="checkbox" value="ua" onchange=displayUA()>UA</label><br>
-        <label><input type="checkbox" value="a" onchange=displayA()>A</label><br>
-        <label><input type="checkbox" value="pg-13" onchange=displayPG13()>PG-13</label><br>
-        <label><input type="checkbox" value="r" onchange=displayR()>R</label><br>
-        <label><input type="checkbox" value="u" onchange=displayU()>U</label><br>
+        <label><input type="checkbox" value="ua" onchange="updateGenreDisplay('ua')">UA</label><br>
+        <label><input type="checkbox" value="a" onchange="updateGenreDisplay('a')">A</label><br>
+        <label><input type="checkbox" value="pg-13" onchange="updateGenreDisplay('pg13')">PG-13</label><br>
+        <label><input type="checkbox" value="r" onchange="updateGenreDisplay('r')">R</label><br>
+        <label><input type="checkbox" value="u" onchange="updateGenreDisplay('u')">U</label><br>
     </div>
   </div>
 
-
     <div>
-      <!-- <button type="button" class="btn btn-primary" onclick='display()'>Primary</button> -->
      <pre id="output"></pre>
     </div>
 
-    <script>
-        var selectedGenres = [];
-        
-        function updateGenreDisplay(genre) {
-            var checkbox = document.querySelector('input[type="checkbox"][value="' + genre + '"]');
-            if (checkbox.checked) {
-                selectedGenres.push(genre);
-            }else {
-                var index = selectedGenres.indexOf(genre);
-                if (index != -1) {
-                    selectedGenres.splice(index, 1);
-                }
-            }
+    <!--genre rows-->
 
-            var output = document.getElementById("output");
-            output.innerHTML = "";
+    <div id="drama" style="display:none" class="row card-section">
+        <div class="col-md-12">
+            <h2 class="card-title mb-3 lato-bold">Drama Movies</h2>
+        </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Shawshank Redemption>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>The Shawshank Redemption</h5>
+                        <p class='card-text'>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Fight Club>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Fight Club</h5>
+                        <p class='card-text'>An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BZjA0OWVhOTAtYWQxNi00YzNhLWI4ZjYtNjFjZTEyYjJlNDVlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=One Flew Over the Cuckoo's Nest>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>One Flew Over the Cuckoo's Nest</h5>
+                        <p class='card-text'>A criminal pleads insanity and is admitted to a mental institution, where he rebels against the oppressive nurse and rallies up the scared patients.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BOTc2ZTlmYmItMDBhYS00YmMzLWI4ZjAtMTI5YTBjOTFiMGEwXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_UY98_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Soorarai Pottru>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Soorarai Pottru</h5>
+                        <p class='card-text'>Nedumaaran Rajangam "Maara" sets out to make the common man fly and in the process takes on the world's most capital intensive industry and several enemies who stand in his way.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BZjA0MTM4MTQtNzY5MC00NzY3LWI1ZTgtYzcxMjkyMzU4MDZiXkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=American History X>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>American History X</h5>
+                        <p class='card-text'>A former neo-nazi skinhead tries to prevent his younger brother from going down the same wrong path that he did.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BMmExNzU2ZWMtYzUwYi00YmM2LTkxZTQtNmVhNjY0NTMyMWI2XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Capharnaüm>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Capharnaüm</h5>
+                        <p class='card-text'>While serving a five-year sentence for a violent crime, a 12-year-old boy sues his parents for neglect.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BMTg2NDg3ODg4NF5BMl5BanBnXkFtZTcwNzk3NTc3Nw@@._V1_UY98_CR1,0,67,98_AL_.jpg class="card-img-top" alt=Jagten>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Jagten</h5>
+                        <p class='card-text'>A teacher lives a lonely life, all the while struggling over his son's custody. His life slowly gets better as he finds love and receives good news from his son, but his new luck is about to be brutally shattered by an innocent little lie.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BN2JmMjViMjMtZTM5Mi00ZGZkLTk5YzctZDg5MjFjZDE4NjNkXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Jodaeiye Nader az Simin>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Jodaeiye Nader az Simin</h5>
+                        <p class='card-text'>A married couple are faced with a difficult decision - to improve the life of their child by moving to another country or to stay in Iran and look after a deteriorating parent who has Alzheimer's disease.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BOGE3N2QxN2YtM2ZlNS00MWIyLWE1NDAtYWFlN2FiYjY1MjczXkEyXkFqcGdeQXVyOTUwNzc0ODc@._V1_UY98_CR1,0,67,98_AL_.jpg class="card-img-top" alt=Miracle in cell NO.7>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Miracle in cell NO.7</h5>
+                        <p class='card-text'>A story of love between a mentally-ill father who was wrongly accused of murder and his lovely six years old daughter. The prison would be their home. Based on the 2013 Korean movie 7-beon-bang-ui seon-mul (2013).</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BOTdiNzJlOWUtNWMwNS00NmFlLWI0YTEtZmI3YjIzZWUyY2Y3XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Requiem for a Dream>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Requiem for a Dream</h5>
+                        <p class='card-text'>The drug-induced utopias of four Coney Island people are shattered when their addictions run deep.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            // display content for selected genres
-            selectedGenres.forEach(function(genre) {
-                // call display functions for each selected genre
-                window["display" + genre.charAt(0).toUpperCase() + genre.slice(1)]();
-            });
-        }
+    <div id="crime" style="display:none" class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Crime Movies</h2>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY98_CR1,0,67,98_AL_.jpg class="card-img-top" alt=The Godfather>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>The Godfather</h5>
+                        <p class='card-text'>An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Dark Knight>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>The Dark Knight</h5>
+                        <p class='card-text'>When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BMWMwMGQzZTItY2JlNC00OWZiLWIyMDctNDk2ZDQ2YjRjMWQ0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY98_CR1,0,67,98_AL_.jpg class="card-img-top" alt=The Godfather: Part II>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>The Godfather: Part II</h5>
+                        <p class='card-text'>The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BMWU4N2FjNzYtNTVkNC00NzQ0LTg0MjAtYTJlMjFhNGUxZDFmXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=12 Angry Men>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>12 Angry Men</h5>
+                        <p class='card-text'>A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY98_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Pulp Fiction>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Pulp Fiction</h5>
+                        <p class='card-text'>The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Goodfellas>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Goodfellas</h5>
+                        <p class='card-text'>The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BOTMwYjc5ZmItYTFjZC00ZGQ3LTlkNTMtMjZiNTZlMWQzNzI5XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Cidade de Deus>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Cidade de Deus</h5>
+                        <p class='card-text'>In the slums of Rio, two kids' paths diverge as one struggles to become a photographer and the other a kingpin.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BMTUxMzQyNjA5MF5BMl5BanBnXkFtZTYwOTU2NTY3._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Green Mile>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>The Green Mile</h5>
+                        <p class='card-text'>The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BOTUwODM5MTctZjczMi00OTk4LTg3NWUtNmVhMTAzNTNjYjcyXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Se7en>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Se7en</h5>
+                        <p class='card-text'>Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Silence of the Lambs>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>The Silence of the Lambs</h5>
+                        <p class='card-text'>A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        function toggleDropdown() {
-            var dropdownContent = document.getElementById("myDropdown");
-            if (dropdownContent.classList.contains("show")) {
-                dropdownContent.classList.remove("show");
-            }else {
-                dropdownContent.classList.add("show");
-            }
-        }
+    <div id="adventure" style="display:none" class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Adventure Movies</h2>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Lord of the Rings: The Return of the King>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>The Lord of the Rings: The Return of the King</h5>
+                        <p class='card-text'>Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Inception>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Inception</h5>
+                        <p class='card-text'>A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Lord of the Rings: The Fellowship of the Ring>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>The Lord of the Rings: The Fellowship of the Ring</h5>
+                        <p class='card-text'>A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BZGMxZTdjZmYtMmE2Ni00ZTdkLWI5NTgtNjlmMjBiNzU2MmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Lord of the Rings: The Two Towers>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>The Lord of the Rings: The Two Towers</h5>
+                        <p class='card-text'>While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Star Wars: Episode V - The Empire Strikes Back>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Star Wars: Episode V - The Empire Strikes Back</h5>
+                        <p class='card-text'>After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader and a bounty hunter named Boba Fett all over the galaxy.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Interstellar>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Interstellar</h5>
+                        <p class='card-text'>A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctNDE2YS00YWE0LWE5ZWItZDBhYWQ0NTcxNWRhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Sen to Chihiro no kamikakushi>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Sen to Chihiro no kamikakushi</h5>
+                        <p class='card-text'>During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, and where humans are changed into beasts.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Star Wars>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Star Wars</h5>
+                        <p class='card-text'>Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BOWE4ZDdhNmMtNzE5ZC00NzExLTlhNGMtY2ZhYjYzODEzODA1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UY98_CR1,0,67,98_AL_.jpg class="card-img-top" alt=Shichinin no samurai>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Shichinin no samurai</h5>
+                        <p class='card-text'>A poor village under attack by bandits recruits seven unemployed samurai to help them defend themselves.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-3">
+                <div class='card' style = "width:18rem;">
+                    <img src=https://m.media-amazon.com/images/M/MV5BMDliMmNhNDEtODUyOS00MjNlLTgxODEtN2U3NzIxMGVkZTA1L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Gladiator>
+                    <div class='card-body lato-regular'>
+                        <h5 class='card-title'>Gladiator</h5>
+                        <p class='card-text'>A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.</p>
+                        <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        function toggleRatingDropdown() {
-            var dropdownContent = document.getElementById("ratingDropdown");
-            if (dropdownContent.classList.contains("show")) {
-                dropdownContent.classList.remove("show");
-            }else {
-                dropdownContent.classList.add("show");
-            }
-        }
+    <div id="sci-fi" style="display:none" class="row card-section SciFi">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Sci-Fi Movies</h2>
+            </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Inception>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Inception</h5>
+                <p class='card-text'>A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Matrix>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Matrix</h5>
+                <p class='card-text'>When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Interstellar>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Interstellar</h5>
+                <p class='card-text'>A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMjA4NDI0MTIxNF5BMl5BanBnXkFtZTYwNTM0MzY2._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Prestige>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Prestige</h5>
+                <p class='card-text'>After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMGU2NzRmZjUtOGUxYS00ZjdjLWEwZWItY2NlM2JhNjkxNTFmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Terminator 2: Judgment Day>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Terminator 2: Judgment Day</h5>
+                <p class='card-text'>A cyborg, identical to the one who failed to kill Sarah Connor, must now protect her teenage son, John Connor, from a more advanced and powerful cyborg.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Back to the Future>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Back to the Future</h5>
+                <p class='card-text'>Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the eccentric scientist Doc Brown.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Avengers: Infinity War>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Avengers: Infinity War</h5>
+                <p class='card-text'>The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMmQ2MmU3NzktZjAxOC00ZDZhLTk4YzEtMDMyMzcxY2IwMDAyXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Alien>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Alien</h5>
+                <p class='card-text'>After a space merchant vessel receives an unknown transmission as a distress call, one of the crew is attacked by a mysterious life form and they soon realize that its life cycle has merely begun.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMTY4NzcwODg3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Eternal Sunshine of the Spotless Mind>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Eternal Sunshine of the Spotless Mind</h5>
+                <p class='card-text'>When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BZGU2OGY5ZTYtMWNhYy00NjZiLWI0NjUtZmNhY2JhNDRmODU3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Aliens>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Aliens</h5>
+                <p class='card-text'>Fifty-seven years after surviving an apocalyptic attack aboard her space vessel by merciless space creatures, Officer Ripley awakens from hyper-sleep and tries to warn anyone who will listen about the predators.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+        </div></div>
 
-        function toggleAgeRatingDropdown() {
-            var dropdownContent = document.getElementById("ageRatingDropdown");
-            if (dropdownContent.classList.contains("show")) {
-                dropdownContent.classList.remove("show");
-            }else {
-                dropdownContent.classList.add("show");
-            }
-        }
-    </script>
+    <div id="romance" style="display:none" class="row card-section Romance">
+        <div class="col-md-12">
+            <h2 class="card-title mb-3 lato-bold">Romance Movies</h2>
+        </div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY98_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Forrest Gump>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Forrest Gump</h5>
+            <p class='card-text'>The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BYmJmM2Q4NmMtYThmNC00ZjRlLWEyZmItZTIwOTBlZDQ3NTQ1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=La vita è bella>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>La vita è bella</h5>
+            <p class='card-text'>When an open-minded Jewish librarian and his son become victims of the Holocaust, he uses a perfect mixture of will, humor, and imagination to protect his son from the dangers around their camp.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BM2FhYjEyYmYtMDI1Yy00YTdlLWI2NWQtYmEzNzAxOGY1NjY2XkEyXkFqcGdeQXVyNTA3NTIyNDg@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Nuovo Cinema Paradiso>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Nuovo Cinema Paradiso</h5>
+            <p class='card-text'>A filmmaker recalls his childhood when falling in love with the pictures at the cinema of his home village and forms a deep friendship with the cinema's projectionist.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BY2IzZGY2YmEtYzljNS00NTM5LTgwMzUtMzM1NjQ4NGI0OTk0XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Casablanca>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Casablanca</h5>
+            <p class='card-text'>A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BY2I4MmM1N2EtM2YzOS00OWUzLTkzYzctNDc5NDg2N2IyODJmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=City Lights>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>City Lights</h5>
+            <p class='card-text'>With the aid of a wealthy erratic tippler, a dewy-eyed tramp who has fallen in love with a sightless flower girl accumulates money to be able to help her medically.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMTY4NzcwODg3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Eternal Sunshine of the Spotless Mind>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Eternal Sunshine of the Spotless Mind</h5>
+            <p class='card-text'>When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BNDg4NjM1YjMtYmNhZC00MjM0LWFiZmYtNGY1YjA3MzZmODc5XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Amélie>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Amélie</h5>
+            <p class='card-text'>Amélie is an innocent and naive girl in Paris with her own sense of justice. She decides to help those around her and, along the way, discovers love.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BOTI0MzcxMTYtZDVkMy00NjY1LTgyMTYtZmUxN2M3NmQ2NWJhXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Good Will Hunting>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Good Will Hunting</h5>
+            <p class='card-text'>Will Hunting, a janitor at M.I.T., has a gift for mathematics, but needs help from a psychologist to find direction in his life.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BNzkwODFjNzItMmMwNi00MTU5LWE2MzktM2M4ZDczZGM1MmViXkEyXkFqcGdeQXVyNDY2MTk1ODk@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Apartment>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>The Apartment</h5>
+            <p class='card-text'>A man tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BYTE4ODEwZDUtNDFjOC00NjAxLWEzYTQtYTI1NGVmZmFlNjdiL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Vertigo>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Vertigo</h5>
+            <p class='card-text'>A former police detective juggles wrestling with his personal demons and becoming obsessed with a hauntingly beautiful woman.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+        </div></div>
 
+    <div id="horror" style="display:none" class="row card-section Horror">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Horror Movies</h2>
+            </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BNTQwNDM1YzItNDAxZC00NWY2LTk0M2UtNDIwNWI5OGUyNWUxXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Psycho>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Psycho</h5>
+                <p class='card-text'>A Phoenix secretary embezzles $40,000 from her employer's client, goes on the run, and checks into a remote motel run by a young man under the domination of his mother.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Shining>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Shining</h5>
+                <p class='card-text'>A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMmQ2MmU3NzktZjAxOC00ZDZhLTk4YzEtMDMyMzcxY2IwMDAyXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Alien>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Alien</h5>
+                <p class='card-text'>After a space merchant vessel receives an unknown transmission as a distress call, one of the crew is attacked by a mysterious life form and they soon realize that its life cycle has merely begun.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BYmQxNmU4ZjgtYzE5Mi00ZDlhLTlhOTctMzJkNjk2ZGUyZGEwXkEyXkFqcGdeQXVyMzgxMDA0Nzk@._V1_UY98_CR1,0,67,98_AL_.jpg class="card-img-top" alt=Tumbbad>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Tumbbad</h5>
+                <p class='card-text'>A mythological story about a goddess who created the entire universe. The plot revolves around the consequences when humans build a temple for her first-born.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BNGViZWZmM2EtNGYzZi00ZDAyLTk3ODMtNzIyZTBjN2Y1NmM1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Thing>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Thing</h5>
+                <p class='card-text'>A research team in Antarctica is hunted by a shape-shifting alien that assumes the appearance of its victims.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BZmI0M2VmNTgtMWVhYS00Zjg1LTk1YTYtNmJmMjRkZmMwYTc2XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=What Ever Happened to Baby Jane?>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>What Ever Happened to Baby Jane?</h5>
+                <p class='card-text'>A former child star torments her paraplegic sister in their decaying Hollywood mansion.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BNWJiNGJiMTEtMGM3OC00ZWNlLTgwZTgtMzdhNTRiZjk5MTQ1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY98_CR1,0,67,98_AL_.jpg class="card-img-top" alt=Das Cabinet des Dr. Caligari>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Das Cabinet des Dr. Caligari</h5>
+                <p class='card-text'>Hypnotist Dr. Caligari uses a somnambulist, Cesare, to commit murders.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BYjhmMGMxZDYtMTkyNy00YWVmLTgyYmUtYTU3ZjcwNTBjN2I1XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Exorcist>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Exorcist</h5>
+                <p class='card-text'>When a 12-year-old girl is possessed by a mysterious entity, her mother seeks the help of two priests to save her.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BZmEwZGU2NzctYzlmNi00MGJkLWE3N2MtYjBlN2ZhMGJkZTZiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Rosemary's Baby>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Rosemary's Baby</h5>
+                <p class='card-text'>A young couple trying for a baby move into a fancy apartment surrounded by peculiar neighbors.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMGJmNmU5OTAtOTQyYy00MmM3LTk4MzUtMGFiZDYzODdmMmU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY98_CR3,0,67,98_AL_.jpg class="card-img-top" alt=Les diaboliques>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Les diaboliques</h5>
+                <p class='card-text'>The wife and mistress of a loathed school principal plan to murder him with what they believe is the perfect alibi.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+        </div></div>
 
+    <!--IMDB Rating rows-->
+    <div id="abovenine" style="display:none" class="row card-section AboveNine">
+        <div class="col-md-12">
+            <h2 class="card-title mb-3 lato-bold">Rating Above 9</h2>
+        </div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Shawshank Redemption>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>The Shawshank Redemption</h5>
+            <p class='card-text'>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY98_CR1,0,67,98_AL_.jpg class="card-img-top" alt=The Godfather>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>The Godfather</h5>
+            <p class='card-text'>An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Dark Knight>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>The Dark Knight</h5>
+            <p class='card-text'>When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMWMwMGQzZTItY2JlNC00OWZiLWIyMDctNDk2ZDQ2YjRjMWQ0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY98_CR1,0,67,98_AL_.jpg class="card-img-top" alt=The Godfather: Part II>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>The Godfather: Part II</h5>
+            <p class='card-text'>The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMWU4N2FjNzYtNTVkNC00NzQ0LTg0MjAtYTJlMjFhNGUxZDFmXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=12 Angry Men>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>12 Angry Men</h5>
+            <p class='card-text'>A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+    </div></div>
+
+    <div id="eightnine" style="display:none" class="row card-section EightNine">
+        <div class="col-md-12">
+            <h2 class="card-title mb-3 lato-bold">Rating Between 8-9</h2>
+        </div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Lord of the Rings: The Return of the King>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>The Lord of the Rings: The Return of the King</h5>
+            <p class='card-text'>Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY98_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Pulp Fiction>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Pulp Fiction</h5>
+            <p class='card-text'>The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Schindler's List>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Schindler's List</h5>
+            <p class='card-text'>In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Inception>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Inception</h5>
+            <p class='card-text'>A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Fight Club>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Fight Club</h5>
+            <p class='card-text'>An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Lord of the Rings: The Fellowship of the Ring>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>The Lord of the Rings: The Fellowship of the Ring</h5>
+            <p class='card-text'>A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY98_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Forrest Gump>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Forrest Gump</h5>
+            <p class='card-text'>The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BOTQ5NDI3MTI4MF5BMl5BanBnXkFtZTgwNDQ4ODE5MDE@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Il buono, il brutto, il cattivo>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Il buono, il brutto, il cattivo</h5>
+            <p class='card-text'>A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BZGMxZTdjZmYtMmE2Ni00ZTdkLWI5NTgtNjlmMjBiNzU2MmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Lord of the Rings: The Two Towers>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>The Lord of the Rings: The Two Towers</h5>
+            <p class='card-text'>While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Matrix>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>The Matrix</h5>
+            <p class='card-text'>When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+        </div></div>
+
+    <div id="seveneight" style="display:none" class="row card-section SevenEight">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Rating Between 7-8</h2>
+            </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMGUwZjliMTAtNzAxZi00MWNiLWE2NzgtZGUxMGQxZjhhNDRiXkEyXkFqcGdeQXVyNjU1NzU3MzE@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Knives Out>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Knives Out</h5>
+                <p class='card-text'>A detective investigates the death of a patriarch of an eccentric, combative family.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BNmI0MTliMTAtMmJhNC00NTJmLTllMzQtMDI3NzA1ODMyZWI1XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_UY98_CR5,0,67,98_AL_.jpg class="card-img-top" alt=Dil Bechara>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Dil Bechara</h5>
+                <p class='card-text'>The emotional journey of two hopelessly in love youngsters, a young girl, Kizie, suffering from cancer, and a boy, Manny, whom she meets at a support group.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BYWZmOTY0MDAtMGRlMS00YjFlLWFkZTUtYmJhYWNlN2JjMmZkXkEyXkFqcGdeQXVyODAzODU1NDQ@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Manbiki kazoku>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Manbiki kazoku</h5>
+                <p class='card-text'>A family of small-time crooks take in a child they find outside in the cold.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BZGVmY2RjNDgtMTc3Yy00YmY0LTgwODItYzBjNWJhNTRlYjdkXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Marriage Story>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Marriage Story</h5>
+                <p class='card-text'>Noah Baumbach's incisive and compassionate look at a marriage breaking up and a family staying together.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BNDk3NTEwNjc0MV5BMl5BanBnXkFtZTgwNzYxNTMwMzI@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Call Me by Your Name>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Call Me by Your Name</h5>
+                <p class='card-text'>In 1980s Italy, romance blossoms between a seventeen-year-old student and the older man hired as his father's research assistant.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMTQ4NTMzMTk4NV5BMl5BanBnXkFtZTgwNTU5MjE4MDI@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=I, Daniel Blake>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>I, Daniel Blake</h5>
+                <p class='card-text'>After having suffered a heart-attack, a 59-year-old carpenter must fight the bureaucratic forces of the system in order to receive Employment and Support Allowance.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BZDQwOWQ2NmUtZThjZi00MGM0LTkzNDctMzcyMjcyOGI1OGRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Isle of Dogs>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Isle of Dogs</h5>
+                <p class='card-text'>Set in Japan, Isle of Dogs follows a boy's odyssey in search of his lost dog.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMjI1MDQ2MDg5Ml5BMl5BanBnXkFtZTgwMjc2NjM5ODE@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Hunt for the Wilderpeople>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Hunt for the Wilderpeople</h5>
+                <p class='card-text'>A national manhunt is ordered for a rebellious kid and his foster uncle who go missing in the wild New Zealand bush.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMjE5OTM0OTY5NF5BMl5BanBnXkFtZTgwMDcxOTQ3ODE@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Captain Fantastic>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Captain Fantastic</h5>
+                <p class='card-text'>In the forests of the Pacific Northwest, a father devoted to raising his six kids with a rigorous physical and intellectual education is forced to leave his paradise and enter the world, challenging his idea of what it means to be a parent.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMjEzODA3MDcxMl5BMl5BanBnXkFtZTgwODgxNDk3NzE@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Sing Street>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Sing Street</h5>
+                <p class='card-text'>A boy growing up in Dublin during the 1980s escapes his strained family life by starting a band to impress the mysterious girl he likes.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+        </div></div>
+
+    <!--Rating rows-->
+    <div id="ua" style="display:none" class="row card-section UA">
+        <div class="col-md-12">
+            <h2 class="card-title mb-3 lato-bold">Rating of UA</h2>
+        </div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Dark Knight>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>The Dark Knight</h5>
+            <p class='card-text'>When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Inception>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Inception</h5>
+            <p class='card-text'>A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY98_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Forrest Gump>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Forrest Gump</h5>
+            <p class='card-text'>The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BZGMxZTdjZmYtMmE2Ni00ZTdkLWI5NTgtNjlmMjBiNzU2MmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Lord of the Rings: The Two Towers>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>The Lord of the Rings: The Two Towers</h5>
+            <p class='card-text'>While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Star Wars: Episode V - The Empire Strikes Back>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Star Wars: Episode V - The Empire Strikes Back</h5>
+            <p class='card-text'>After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader and a bounty hunter named Boba Fett all over the galaxy.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Interstellar>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Interstellar</h5>
+            <p class='card-text'>A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Star Wars>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Star Wars</h5>
+            <p class='card-text'>Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMTYxNDA3MDQwNl5BMl5BanBnXkFtZTcwNTU4Mzc1Nw@@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Intouchables>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>The Intouchables</h5>
+            <p class='card-text'>After he becomes a quadriplegic from a paragliding accident, an aristocrat hires a young man from the projects to be his caregiver.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMDliMmNhNDEtODUyOS00MjNlLTgxODEtN2U3NzIxMGVkZTA1L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Gladiator>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Gladiator</h5>
+            <p class='card-text'>A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BY2FiMTFmMzMtZDI2ZC00NDQyLWExYTUtOWNmZWM1ZDg5YjVjXkEyXkFqcGdeQXVyODIwMDI1NjM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Vikram Vedha>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Vikram Vedha</h5>
+            <p class='card-text'>Vikram, a no-nonsense police officer, accompanied by Simon, his partner, is on the hunt to capture Vedha, a smuggler and a murderer. Vedha tries to change Vikram's life, which leads to a conflict.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+        </div></div>
+
+    <div id="a" style="display:none" class="row card-section A">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Rating of A</h2>
+            </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Shawshank Redemption>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Shawshank Redemption</h5>
+                <p class='card-text'>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY98_CR1,0,67,98_AL_.jpg class="card-img-top" alt=The Godfather>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Godfather</h5>
+                <p class='card-text'>An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMWMwMGQzZTItY2JlNC00OWZiLWIyMDctNDk2ZDQ2YjRjMWQ0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY98_CR1,0,67,98_AL_.jpg class="card-img-top" alt=The Godfather: Part II>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Godfather: Part II</h5>
+                <p class='card-text'>The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY98_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Pulp Fiction>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Pulp Fiction</h5>
+                <p class='card-text'>The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Schindler's List>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Schindler's List</h5>
+                <p class='card-text'>In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Fight Club>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Fight Club</h5>
+                <p class='card-text'>An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BOTQ5NDI3MTI4MF5BMl5BanBnXkFtZTgwNDQ4ODE5MDE@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Il buono, il brutto, il cattivo>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Il buono, il brutto, il cattivo</h5>
+                <p class='card-text'>A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Matrix>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Matrix</h5>
+                <p class='card-text'>When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Goodfellas>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Goodfellas</h5>
+                <p class='card-text'>The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BZjA0OWVhOTAtYWQxNi00YzNhLWI4ZjYtNjFjZTEyYjJlNDVlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=One Flew Over the Cuckoo's Nest>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>One Flew Over the Cuckoo's Nest</h5>
+                <p class='card-text'>A criminal pleads insanity and is admitted to a mental institution, where he rebels against the oppressive nurse and rallies up the scared patients.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+        </div></div>
+
+    <div id="pg13" style="display:none" class="row card-section PG13">
+        <div class="col-md-12">
+            <h2 class="card-title mb-3 lato-bold">Rating of PG-13</h2>
+        </div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BNjViNWRjYWEtZTI0NC00N2E3LTk0NGQtMjY4NTM3OGNkZjY0XkEyXkFqcGdeQXVyMjUxMTY3ODM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Hamilton>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Hamilton</h5>
+            <p class='card-text'>The real life of one of America's foremost founding fathers and first Secretary of the Treasury, Alexander Hamilton. Captured live on Broadway from the Richard Rodgers Theater with the original Broadway cast.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BN2JmMjViMjMtZTM5Mi00ZGZkLTk5YzctZDg5MjFjZDE4NjNkXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Jodaeiye Nader az Simin>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Jodaeiye Nader az Simin</h5>
+            <p class='card-text'>A married couple are faced with a difficult decision - to improve the life of their child by moving to another country or to stay in Iran and look after a deteriorating parent who has Alzheimer's disease.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMTUzOTcwOTA2NV5BMl5BanBnXkFtZTcwNDczMzczMg@@._V1_UY98_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Okuribito>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Okuribito</h5>
+            <p class='card-text'>A newly unemployed cellist takes a job preparing the dead for funerals.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BZGJjYmIzZmQtNWE4Yy00ZGVmLWJkZGEtMzUzNmQ4ZWFlMjRhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Hotel Rwanda>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Hotel Rwanda</h5>
+            <p class='card-text'>Paul Rusesabagina, a hotel manager, houses over a thousand Tutsi refugees during their struggle against the Hutu militia in Rwanda, Africa.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMGRkZThmYzEtYjQxZC00OWEzLThjYjAtYzFkMjY0NGZkZWI4XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Persepolis>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Persepolis</h5>
+            <p class='card-text'>A precocious and outspoken Iranian girl grows up during the Islamic Revolution.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMTc3MjkzMDkxN15BMl5BanBnXkFtZTcwODAyMTU1MQ@@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Le scaphandre et le papillon>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Le scaphandre et le papillon</h5>
+            <p class='card-text'>The true story of Elle editor Jean-Dominique Bauby who suffers a stroke and has to live with an almost totally paralyzed body; only his left eye isn't paralyzed.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMDI5ZWJhOWItYTlhOC00YWNhLTlkNzctNDU5YTI1M2E1MWZhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Casino Royale>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Casino Royale</h5>
+            <p class='card-text'>After earning 00 status and a licence to kill, Secret Agent James Bond sets out on his first mission as 007. Bond must defeat a private banker funding terrorists in a high-stakes game of poker at Casino Royale, Montenegro.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BOTA1MjA3M2EtMmJjZS00OWViLTkwMTEtM2E5ZDk0NTAyNGJiXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Touch of Evil>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Touch of Evil</h5>
+            <p class='card-text'>A stark, perverse story of murder, kidnapping, and police corruption in a Mexican border town.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BMjEzODA3MDcxMl5BMl5BanBnXkFtZTgwODgxNDk3NzE@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Sing Street>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Sing Street</h5>
+            <p class='card-text'>A boy growing up in Dublin during the 1980s escapes his strained family life by starting a band to impress the mysterious girl he likes.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
+<div class = "col-md-3">
+    <div class='card' style = "width:18rem;">
+        <img src=https://m.media-amazon.com/images/M/MV5BOGY1M2MwOTEtZDIyNi00YjNlLWExYmEtNzBjOGI3N2QzNTg5XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Les choristes>
+        <div class='card-body lato-regular'>
+            <h5 class='card-title'>Les choristes</h5>
+            <p class='card-text'>The new teacher at a severely administered boys' boarding school works to positively affect the students' lives through music.</p>
+            <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+        </div>
+    </div>
+        </div></div>
+
+    <div id="r" style="display:none" class="row card-section R">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Rating of R</h2>
+            </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BZjhkMDM4MWItZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Saving Private Ryan>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Saving Private Ryan</h5>
+                <p class='card-text'>Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BOWRiZDIxZjktMTA1NC00MDQ2LWEzMjUtMTliZmY3NjQ3ODJiXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY98_CR2,0,67,98_AL_.jpg class="card-img-top" alt=The Pianist>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Pianist</h5>
+                <p class='card-text'>A Polish Jewish musician struggles to survive the destruction of the Warsaw ghetto of World War II.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BZjA0MTM4MTQtNzY5MC00NzY3LWI1ZTgtYzcxMjkyMzU4MDZiXkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=American History X>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>American History X</h5>
+                <p class='card-text'>A former neo-nazi skinhead tries to prevent his younger brother from going down the same wrong path that he did.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMDdhODg0MjYtYzBiOS00ZmI5LWEwZGYtZDEyNDU4MmQyNzFkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Apocalypse Now>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Apocalypse Now</h5>
+                <p class='card-text'>A U.S. Army officer serving in Vietnam is tasked with assassinating a renegade Special Forces Colonel who sees himself as a god.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMmQ2MmU3NzktZjAxOC00ZDZhLTk4YzEtMDMyMzcxY2IwMDAyXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Alien>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Alien</h5>
+                <p class='card-text'>After a space merchant vessel receives an unknown transmission as a distress call, one of the crew is attacked by a mysterious life form and they soon realize that its life cycle has merely begun.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BOTdmNTFjNDEtNzg0My00ZjkxLTg1ZDAtZTdkMDc2ZmFiNWQ1XkEyXkFqcGdeQXVyNTAzNzgwNTg@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=1917>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>1917</h5>
+                <p class='card-text'>April 6th, 1917. As a regiment assembles to wage war deep in enemy territory, two soldiers are assigned to race against time and deliver a message that will stop 1,600 men from walking straight into a deadly trap.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMTg2NDg3ODg4NF5BMl5BanBnXkFtZTcwNzk3NTc3Nw@@._V1_UY98_CR1,0,67,98_AL_.jpg class="card-img-top" alt=Jagten>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Jagten</h5>
+                <p class='card-text'>A teacher lives a lonely life, all the while struggling over his son's custody. His life slowly gets better as he finds love and receives good news from his son, but his new luck is about to be brutally shattered by an innocent little lie.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMWE3MGYzZjktY2Q5Mi00Y2NiLWIyYWUtMmIyNzA3YmZlMGFhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Incendies>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Incendies</h5>
+                <p class='card-text'>Twins journey to the Middle East to discover their family history and fulfill their mother's last wishes.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BZmExNmEwYWItYmQzOS00YjA5LTk2MjktZjEyZDE1Y2QxNjA1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Reservoir Dogs>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Reservoir Dogs</h5>
+                <p class='card-text'>When a simple jewelry heist goes horribly wrong, the surviving criminals begin to suspect that one of them is a police informant.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BNWJlNzUzNGMtYTAwMS00ZjI2LWFmNWQtODcxNWUxODA5YmU1XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Amadeus>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Amadeus</h5>
+                <p class='card-text'>The life, success and troubles of Wolfgang Amadeus Mozart, as told by Antonio Salieri, the contemporaneous composer who was insanely jealous of Mozart's talent and claimed to have murdered him.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+        </div></div>
+
+    <div id="u" style="display:none" class="row card-section U">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Rating of U</h2>
+            </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMWU4N2FjNzYtNTVkNC00NzQ0LTg0MjAtYTJlMjFhNGUxZDFmXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=12 Angry Men>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>12 Angry Men</h5>
+                <p class='card-text'>A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Lord of the Rings: The Return of the King>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Lord of the Rings: The Return of the King</h5>
+                <p class='card-text'>Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Lord of the Rings: The Fellowship of the Ring>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Lord of the Rings: The Fellowship of the Ring</h5>
+                <p class='card-text'>A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BOTc2ZTlmYmItMDBhYS00YmMzLWI4ZjAtMTI5YTBjOTFiMGEwXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_UY98_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Soorarai Pottru>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Soorarai Pottru</h5>
+                <p class='card-text'>Nedumaaran Rajangam "Maara" sets out to make the common man fly and in the process takes on the world's most capital intensive industry and several enemies who stand in his way.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctNDE2YS00YWE0LWE5ZWItZDBhYWQ0NTcxNWRhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Sen to Chihiro no kamikakushi>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Sen to Chihiro no kamikakushi</h5>
+                <p class='card-text'>During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, and where humans are changed into beasts.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BYmJmM2Q4NmMtYThmNC00ZjRlLWEyZmItZTIwOTBlZDQ3NTQ1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=La vita è bella>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>La vita è bella</h5>
+                <p class='card-text'>When an open-minded Jewish librarian and his son become victims of the Holocaust, he uses a perfect mixture of will, humor, and imagination to protect his son from the dangers around their camp.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BOWE4ZDdhNmMtNzE5ZC00NzExLTlhNGMtY2ZhYjYzODEzODA1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UY98_CR1,0,67,98_AL_.jpg class="card-img-top" alt=Shichinin no samurai>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Shichinin no samurai</h5>
+                <p class='card-text'>A poor village under attack by bandits recruits seven unemployed samurai to help them defend themselves.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMjA4NDI0MTIxNF5BMl5BanBnXkFtZTYwNTM0MzY2._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Prestige>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Prestige</h5>
+                <p class='card-text'>After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BYTYxNGMyZTYtMjE3MS00MzNjLWFjNmYtMDk3N2FmM2JiM2M1XkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=The Lion King>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>The Lion King</h5>
+                <p class='card-text'>Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class='card' style = "width:18rem;">
+            <img src=https://m.media-amazon.com/images/M/MV5BMGU2NzRmZjUtOGUxYS00ZjdjLWEwZWItY2NlM2JhNjkxNTFmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg class="card-img-top" alt=Terminator 2: Judgment Day>
+            <div class='card-body lato-regular'>
+                <h5 class='card-title'>Terminator 2: Judgment Day</h5>
+                <p class='card-text'>A cyborg, identical to the one who failed to kill Sarah Connor, must now protect her teenage son, John Connor, from a more advanced and powerful cyborg.</p>
+                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+            </div>
+        </div>
+        </div></div>
 </body>
 
 </html>

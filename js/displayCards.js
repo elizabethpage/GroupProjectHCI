@@ -303,7 +303,6 @@ function displayThisMovie(movieArrNum) {
         </div>
     </div>`;
     return movieCard;
-    // document.getElementById("output").insertAdjacentHTML("beforebegin", movieCard);
 }
 
 function displayPopularNowrow() {
@@ -315,7 +314,7 @@ function displayPopularNowrow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section PopularNow">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Popular Now</h2>
             </div>`;
@@ -346,7 +345,7 @@ function displayFreshFindsrow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section FreshFinds">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Fresh Finds</h2>
             </div>`;
@@ -373,7 +372,7 @@ function displayClassicsrow(){
 
     //creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section Classics">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Classics</h2>
             </div>`;
@@ -405,7 +404,7 @@ function displayDramaRow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div id="drama" class="row card-section">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Drama Movies</h2>
             </div>`;
@@ -476,7 +475,7 @@ function displayCrimeRow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section Crime">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Crime Movies</h2>
             </div>`;
@@ -538,7 +537,7 @@ function displaySciFiRow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section SciFi">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Sci-Fi Movies</h2>
             </div>`;
@@ -569,7 +568,7 @@ function displayRomanceRow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section Romance">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Romance Movies</h2>
             </div>`;
@@ -600,7 +599,7 @@ function displayHorrorRow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section Horror">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Horror Movies</h2>
             </div>`;
@@ -631,7 +630,7 @@ function displayAboveNineRow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section AboveNine">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Rating Above 9</h2>
             </div>`;
@@ -662,7 +661,7 @@ function displayEightNineRow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section EightNine">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Rating Between 8-9</h2>
             </div>`;
@@ -693,7 +692,7 @@ function displaySevenEightRow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section SevenEight">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Rating Between 7-8</h2>
             </div>`;
@@ -724,7 +723,7 @@ function displayUARow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section UA">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Rating of UA</h2>
             </div>`;
@@ -755,7 +754,7 @@ function displayARow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section A">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Rating of A</h2>
             </div>`;
@@ -786,7 +785,7 @@ function displayPG13Row() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section PG13">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Rating of PG-13</h2>
             </div>`;
@@ -817,7 +816,7 @@ function displayRRow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section R">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Rating of R</h2>
             </div>`;
@@ -848,7 +847,7 @@ function displayURow() {
 
     // Creating row div start
     const rowDiv = `
-        <div class="row card-section">
+        <div class="row card-section U">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Rating of U</h2>
             </div>`;
