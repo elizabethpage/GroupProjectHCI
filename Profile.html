@@ -24,7 +24,7 @@
 
 </head>
 
-<body>
+<body onload="openList(event, 'Favorites')">
     <div class="container">
         <!-- Title -->
         <div class="row">
@@ -203,10 +203,219 @@
                         </div>
                     </div>
                 </div>
-
           </div>
+          
+
+        <!--Custom Lists-->
+        <div class="row card-section" id="listRow">
+            <div class="col-md-12">
+              <h2 class="card-title mb-3 lato-bold">User Lists</h2>
+            </div>
+            <!-- Tab links -->
+            <div class="tab" id="listTab">
+                <button class="tablinks" onclick="openList(event, 'Favorites')">Favorites</button>
+                <button class="tablinks" onclick="openList(event, 'Cry')">Made me cry</button>
+                <button class="tablinks" onclick="openList(event, 'Family')">Watch with family</button>
+            </div>
+            
+            <!-- Tab content -->
+            <div id="Favorites" class="tabcontent">
+                <h3>Favorites</h3>
+                <!--Add to List-->
+                <!-- Button trigger modal -->
+                <div class="row">
+                    <button type="button" class="btn btn-customcolor lato-regular btn-lg" style="width: 8rem; margin: 10px 10px 10px 69rem; " data-bs-toggle="modal" data-bs-target="#FavoritesModal">
+                        +
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade modal-lg loto-regular" id="FavoritesModal" tabindex="-1" aria-labelledby="FavoritesModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="FavoritesModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="FavoritesForm" method="POST">
+                                    <div class="container container-lg">
+                                        <div class="mb-3">
+                                        <label for="FavoritesTitle" class="form-label">Title:</label>
+                                        <input type="text" class="form-control" id="FavoritesTitle" aria-describedby="title">
+                                        </div>
+                                        <div class="mb-3">
+                                        <label for="FavoritesContent" class="form-label">Notes:</label>
+                                        <input type="text" class="form-control" id="FavoritesContent">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-customcolor" data-bs-dismiss="modal">Close</button>
+                            <button id="FavoritesButton" type="button" class="btn btn-customcolor" onclick="addToList(id)">Add to List</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-md-3">
+                <div class="card" style="width: 18rem;" id="favCard1">
+                    <img src="assets/getout.jpg" class="card-img-top" alt="...">
+                    <div class="card-body lato-regular">
+                    <h5 class="card-title">Get Out</h5>
+                    <p class="card-text">A young African-American visits his white girlfriend's parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.</p>
+                    <p class="placeholder"></p>
+                    <button id="favDeleteButton1" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+            
+            <div id="Cry" class="tabcontent">
+                <h3>Made me cry</h3>
+                <!--Add to List-->
+                <!-- Button trigger modal -->
+                <div class="row">
+                    <button type="button" class="btn btn-customcolor lato-regular btn-lg" style="width: 8rem; margin: 10px 10px 10px 69rem; " data-bs-toggle="modal" data-bs-target="#CryModal">
+                        +
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade modal-lg loto-regular" id="CryModal" tabindex="-1" aria-labelledby="CryModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="CryModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="CryForm" method="POST">
+                                    <div class="container container-lg">
+                                        <div class="mb-3">
+                                        <label for="CryTitle" class="form-label">Title:</label>
+                                        <input type="text" class="form-control" id="CryTitle" aria-describedby="title">
+                                        </div>
+                                        <div class="mb-3">
+                                        <label for="CryContent" class="form-label">Notes:</label>
+                                        <input type="text" class="form-control" id="CryContent">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-customcolor" data-bs-dismiss="modal">Close</button>
+                            <button id="CryButton" type="button" class="btn btn-customcolor" onclick="addToList(id)">Add to List</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-md-3">
+                    <div class="card" style="width: 18rem;" id="cryCard1">
+                        <img src="assets/harrysally.jpg" class="card-img-top" alt="...">
+                        <div class="card-body lato-regular">
+                        <h5 class="card-title">When Harry Met Sally</h5>
+                        <p class="card-text">Harry and Sally have known each other for years, and are very good friends, but they fear sex would ruin the friendship.</p>
+                        <p class="placeholder"></p>
+                        <button id="cryDeleteButton1" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="Family" class="tabcontent">
+                <h3>Watch with family</h3>
+                <!--Add to List-->
+                <!-- Button trigger modal -->
+                <div class="row">
+                    <button type="button" class="btn btn-customcolor lato-regular btn-lg" style="width: 8rem; margin: 10px 10px 10px 69rem; " data-bs-toggle="modal" data-bs-target="#FamilyModal">
+                        +
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade modal-lg loto-regular" id="FamilyModal" tabindex="-1" aria-labelledby="FamilyModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="FamilyModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="FamilyForm" method="POST">
+                                    <div class="container container-lg">
+                                        <div class="mb-3">
+                                        <label for="FamilyTitle" class="form-label">Title:</label>
+                                        <input type="text" class="form-control" id="FamilyTitle" aria-describedby="title">
+                                        </div>
+                                        <div class="mb-3">
+                                        <label for="FamilyContent" class="form-label">Notes:</label>
+                                        <input type="text" class="form-control" id="FamilyContent">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-customcolor" data-bs-dismiss="modal">Close</button>
+                            <button id="FamilyButton" type="button" class="btn btn-customcolor" onclick="addToList(id)">Add to List</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-md-3">
+                    <div class="card" style="width: 18rem;" id="cryCard1">
+                        <img src="assets/gladiator.jpg" class="card-img-top" alt="...">
+                        <div class="card-body lato-regular">
+                        <h5 class="card-title">Gladiator</h5>
+                        <p class="card-text">A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.</p>
+                        <p class="placeholder"></p>
+                        <button id="familyDeleteButton1" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Add to List-->
+                <!-- Button trigger modal -->
+                <div class="row">
+                    <button type="button" class="btn btn-customcolor lato-regular" data-bs-toggle="modal" data-bs-target="#customModal">
+                        Add List
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade modal-lg loto-regular" id="customModal" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="customModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="customForm" method="POST">
+                                    <div class="container container-lg">
+                                    <div class="mb-3">
+                                    <label for="customTitle" class="form-label">Title:</label>
+                                    <input type="text" class="form-control" id="customTitle" aria-describedby="title">
+                                    </div>
+                                    <!-- <div class="mb-3">
+                                    <label for="wantContent" class="form-label">Notes:</label>
+                                    <input type="text" class="form-control" id="watchedContent">
+                                    </div> -->
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-customcolor" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-customcolor" onclick="addList()">Add List</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
 
     </div>
+
 </body>
 
 </html>
