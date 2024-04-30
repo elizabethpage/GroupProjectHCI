@@ -22,15 +22,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
-    <!--JavaScript for calling displayPopularNow and displayFreshFinds-->
-    <script>
-      window.onload = function() {
-          displayPopularNow();
-          displayFreshFinds();
-          displayClassics();
-      };
-  </script>
-
 </head>
 
 <body>
@@ -69,13 +60,7 @@
                                 </li>
                               </ul>
                             </div>
-                            <!-- Separate div for search bar aligned to the right -->
-                            <div class="ms-auto">
-                                <form class="d-flex">
-                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn" type="submit"></button>
-                                </form>
-                            </div>
+                            
                         </div>
                     </nav>
                 </div>
@@ -88,25 +73,12 @@
       </div>
 
 
-      <!-- Filter button-->
-
-      <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Genre</button>
-        <div id="myDropdown" class="dropdown-content">
-          <a href="#drama">Drama</a>
-          <a href="#crime">Crime</a>
-          <a href="#action">Action</a>
-          <a href="#adventure">Adventure</a>
-          <a href="#biography">Biography</a>
-          <a href="#history">History</a>
-          <a href="#sci-fi">Sci-Fi</a>
-        </div>
-      </div>
+      
 
       <!--Dropdown Button-->
       <style>
         .dropbtn {
-            background-color: #04AA6D;
+            background-color: #b97ce4d0;
             color: white;
             padding: 16px;
             font-size: 16px;
@@ -116,13 +88,12 @@
 
         /* Dropdown button on hover & focus */
         .dropbtn:hover, .dropbtn:focus {
-            background-color: #3e8e41;
+            background-color: #b165e7d0;
         }
 
         /* The search field */
         #myInput {
             box-sizing: border-box;
-            background-image: url('searchicon.png');
             background-position: 14px 12px;
             background-repeat: no-repeat;
             font-size: 16px;
@@ -165,10 +136,96 @@
         .show {display:block;}
 </style>
 
+<!-- Filter button-->
+
+<div class="dropdown">
+    <button onclick="toggleDropdown()" class="dropbtn">Genre</button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="#drama" onclick="displayGenre('drama')">Drama</a>
+      <a href="#crime" onclick="displayGenre('crime')">Crime</a>
+      <a href="#adventure" onclick="displayAdventure()">Adventure</a>
+      <a href="#sci-fi" onclick="displaySciFi()">Sci-Fi</a> 
+      <a href="#romance" onclick="displayRomance()">Romance</a>
+      <a href="#horror" onclick="displayHorror()">Horror</a>     
+    </div>
+  </div>
+
+
     <div>
       <!-- <button type="button" class="btn btn-primary" onclick='display()'>Primary</button> -->
      <pre id="output"></pre>
     </div>
+
+    <!-- Original content -->
+    <div id="originalContent">
+        <script>
+            window.onload = function() {
+                displayOriginalContent();
+                // displayPopularNow();
+                // displayFreshFinds();
+                //displayClassics();
+            };
+
+            function displayOriginalContent() {
+                // show original content and hide genre-specific content
+                document.getElementById("originalContent").style.display = "block";
+                document.getElementById("output").innerHTML = "";
+
+                //call functions to display original content
+                displayPopularNow();
+                displayFreshFinds();
+
+                //hide any genre-specific content
+                hideGenre(selectedGenre);
+                selectedGenre = null; // reset selected genre
+            }
+
+        </script>
+    </div>
+
+
+    <script>
+
+        var selectedGenre = null; 
+
+        function displayGenre(genre) {
+            // hide original content
+            document.getElementById("originalContent").style.display = "none";
+
+            // hide previous genre-specific content if any
+            if (selectedGenre) {
+                hideGenre(selectedGenre);
+            }
+
+            // Display the selected genre's content
+            window["display" + genre.charAt(0).toUpperCase() + genre.slice(1)]();
+
+            // update selected genre
+            selectedGenre = genre;
+        }
+
+        /* when the user clicks on the button, toggle between hiding and showing the dropdown content */
+
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("myDropdown");
+            if (dropdownContent.style.display === "none" || dropdownContent.style.display === "")  {
+                dropdownContent.style.display = "block";
+            } else {
+                dropdownContent.style.display = "none";
+            }
+        }
+
+        function hideGenre(genre) {
+            if (genre) {
+                window["hide" + genre.charAt(0).toUpperCase() + genre.slice(1)]();
+            }
+        }
+        
+    </script>
+
+    <script>
+        
+    </script>
 
 
 </body>
