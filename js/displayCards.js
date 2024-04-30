@@ -288,6 +288,7 @@ function displayThisMovie(movieArrNum) {
     title = movieData[movieArrNum].Series_Title;
     image = movieData[movieArrNum].Poster_Link;
     overview = movieData[movieArrNum].Overview;
+    ID = movieData[movieArrNum].No_of_Votes;
 
     //making the movie card
     let movieCard = '';
@@ -298,7 +299,7 @@ function displayThisMovie(movieArrNum) {
             <div class='card-body lato-regular'>
                 <h5 class='card-title'>${title}</h5>
                 <p class='card-text'>${overview}</p>
-                <a href="#" class="btn btn-customcolor">Add to Watchlist</a>
+                <a href="#" id="${ID}"  onclick="moveToWant(id)" class="btn btn-customcolor">Add to Watchlist</a>
             </div>
         </div>
     </div>`;
