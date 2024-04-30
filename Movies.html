@@ -136,7 +136,7 @@
         .show {display:block;}
 </style>
 
-<!-- Filter button-->
+<!-- Filter button for Genre-->
 
   <div class="dropdown">
     <button onclick="toggleDropdown()" class="dropbtn">Genre</button>
@@ -147,6 +147,26 @@
         <label><input type="checkbox" value="sci-fi" onchange="updateGenreDisplay('sci-fi')">Sci-Fi</label><br>
         <label><input type="checkbox" value="romance" onchange="updateGenreDisplay('romance')">Romance</label><br>
         <label><input type="checkbox" value="horror" onchange="updateGenreDisplay('horror')">Horror</label><br>
+    </div>
+  </div>
+
+  <div class="dropdown" style="margin-left: 500px">
+    <button onclick="toggleRatingDropdown()" class="dropbtn">Rating</button>
+    <div id="ratingDropdown" class="dropdown-content">
+        <label><input type="checkbox" value="greaternine" onchange=displayAboveNine()>9+</label><br>
+        <label><input type="checkbox" value="eightnine" onchange=displayEightNine()>8-9</label><br>
+        <label><input type="checkbox" value="seveneight" onchange=displaySevenEight()>7-8</label><br>
+    </div>
+  </div>
+
+  <div class="dropdown" style="margin-left: 1000px">
+    <button onclick="toggleAgeRatingDropdown()" class="dropbtn">Age Rating</button>
+    <div id="ageRatingDropdown" class="dropdown-content">
+        <label><input type="checkbox" value="ua" onchange=displayUA()>UA</label><br>
+        <label><input type="checkbox" value="a" onchange=displayA()>A</label><br>
+        <label><input type="checkbox" value="pg-13" onchange=displayPG13()>PG-13</label><br>
+        <label><input type="checkbox" value="r" onchange=displayR()>R</label><br>
+        <label><input type="checkbox" value="u" onchange=displayU()>U</label><br>
     </div>
   </div>
 
@@ -182,6 +202,24 @@
 
         function toggleDropdown() {
             var dropdownContent = document.getElementById("myDropdown");
+            if (dropdownContent.classList.contains("show")) {
+                dropdownContent.classList.remove("show");
+            }else {
+                dropdownContent.classList.add("show");
+            }
+        }
+
+        function toggleRatingDropdown() {
+            var dropdownContent = document.getElementById("ratingDropdown");
+            if (dropdownContent.classList.contains("show")) {
+                dropdownContent.classList.remove("show");
+            }else {
+                dropdownContent.classList.add("show");
+            }
+        }
+
+        function toggleAgeRatingDropdown() {
+            var dropdownContent = document.getElementById("ageRatingDropdown");
             if (dropdownContent.classList.contains("show")) {
                 dropdownContent.classList.remove("show");
             }else {

@@ -55,6 +55,134 @@ function displayDrama() {
     });
 }
 
+//function that fetches movies above 10
+function displayAboveNine() {
+    fetch('/assets/imdb_top_1000.csv')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); 
+      movieData = data;
+    //   displayThisMovie(0);
+      displayAboveNineRow();
+    })
+    .catch(error => {
+      // Handle any errors that occur during the fetch
+      console.error('Error fetching JSON:', error);
+    });
+}
+
+//function that fetches movies between 8-9
+function displayEightNine() {
+    fetch('/assets/imdb_top_1000.csv')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); 
+      movieData = data;
+    //   displayThisMovie(0);
+      displayEightNineRow();
+    })
+    .catch(error => {
+      // Handle any errors that occur during the fetch
+      console.error('Error fetching JSON:', error);
+    });
+}
+
+//function that fetches movies between 7-8
+function displaySevenEight() {
+    fetch('/assets/imdb_top_1000.csv')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); 
+      movieData = data;
+    //   displayThisMovie(0);
+      displaySevenEightRow();
+    })
+    .catch(error => {
+      // Handle any errors that occur during the fetch
+      console.error('Error fetching JSON:', error);
+    });
+}
+
+//function that fetches movies with a UA rating
+function displayUA() {
+    fetch('/assets/imdb_top_1000.csv')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); 
+      movieData = data;
+    //   displayThisMovie(0);
+      displayUARow();
+    })
+    .catch(error => {
+      // Handle any errors that occur during the fetch
+      console.error('Error fetching JSON:', error);
+    });
+}
+
+//function that fetches movies with an A rating
+function displayA() {
+    fetch('/assets/imdb_top_1000.csv')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); 
+      movieData = data;
+    //   displayThisMovie(0);
+      displayARow();
+    })
+    .catch(error => {
+      // Handle any errors that occur during the fetch
+      console.error('Error fetching JSON:', error);
+    });
+}
+
+//function that fetches movies with a PG-13 rating
+function displayPG13() {
+    fetch('/assets/imdb_top_1000.csv')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); 
+      movieData = data;
+    //   displayThisMovie(0);
+      displayPG13Row();
+    })
+    .catch(error => {
+      // Handle any errors that occur during the fetch
+      console.error('Error fetching JSON:', error);
+    });
+}
+
+//function that fetches movies with a R rating
+function displayR() {
+    fetch('/assets/imdb_top_1000.csv')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); 
+      movieData = data;
+    //   displayThisMovie(0);
+      displayRRow();
+    })
+    .catch(error => {
+      // Handle any errors that occur during the fetch
+      console.error('Error fetching JSON:', error);
+    });
+}
+
+//function that fetches movies with a U rating
+function displayU() {
+    fetch('/assets/imdb_top_1000.csv')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); 
+      movieData = data;
+    //   displayThisMovie(0);
+      displayURow();
+    })
+    .catch(error => {
+      // Handle any errors that occur during the fetch
+      console.error('Error fetching JSON:', error);
+    });
+}
+
 //function that fetches adventure movies
 function displayAdventure() {
     fetch('/assets/imdb_top_1000.csv')
@@ -475,6 +603,254 @@ function displayHorrorRow() {
         <div class="row card-section">
             <div class="col-md-12">
                 <h2 class="card-title mb-3 lato-bold">Horror Movies</h2>
+            </div>`;
+    displayThis = displayThis + rowDiv;
+
+    // Loop through filtered movies
+    filteredMovies.slice(0, 10).forEach(movie => {
+        const movieIndex = movieData.findIndex(m => m === movie); // Find index of movie in movieData
+        if (movieIndex !== -1) {
+            displayThis += displayThisMovie(movieIndex); // Pass index to displayThisMovie
+        }
+    });
+
+    // Creating row div end
+    const rowEnd = `</div>`;
+    displayThis += rowEnd;
+
+    // Displaying movies
+    document.getElementById("output").insertAdjacentHTML("beforebegin", displayThis);
+}
+
+function displayAboveNineRow() {
+    let displayThis = '';
+
+    // Filter movies based on genre
+    const filteredMovies = movieData.filter(movie => parseFloat(movie.IMDB_Rating) >= 9);
+    console.log(filteredMovies);
+
+    // Creating row div start
+    const rowDiv = `
+        <div class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Rating Above 9</h2>
+            </div>`;
+    displayThis = displayThis + rowDiv;
+
+    // Loop through filtered movies
+    filteredMovies.slice(0, 10).forEach(movie => {
+        const movieIndex = movieData.findIndex(m => m === movie); // Find index of movie in movieData
+        if (movieIndex !== -1) {
+            displayThis += displayThisMovie(movieIndex); // Pass index to displayThisMovie
+        }
+    });
+
+    // Creating row div end
+    const rowEnd = `</div>`;
+    displayThis += rowEnd;
+
+    // Displaying movies
+    document.getElementById("output").insertAdjacentHTML("beforebegin", displayThis);
+}
+
+function displayEightNineRow() {
+    let displayThis = '';
+
+    // Filter movies based on genre
+    const filteredMovies = movieData.filter(movie => parseFloat(movie.IMDB_Rating) < 9 && parseFloat(movie.IMDB_Rating) >= 8);
+    console.log(filteredMovies);
+
+    // Creating row div start
+    const rowDiv = `
+        <div class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Rating Between 8-9</h2>
+            </div>`;
+    displayThis = displayThis + rowDiv;
+
+    // Loop through filtered movies
+    filteredMovies.slice(0, 10).forEach(movie => {
+        const movieIndex = movieData.findIndex(m => m === movie); // Find index of movie in movieData
+        if (movieIndex !== -1) {
+            displayThis += displayThisMovie(movieIndex); // Pass index to displayThisMovie
+        }
+    });
+
+    // Creating row div end
+    const rowEnd = `</div>`;
+    displayThis += rowEnd;
+
+    // Displaying movies
+    document.getElementById("output").insertAdjacentHTML("beforebegin", displayThis);
+}
+
+function displaySevenEightRow() {
+    let displayThis = '';
+
+    // Filter movies based on genre
+    const filteredMovies = movieData.filter(movie => parseFloat(movie.IMDB_Rating) < 8 && parseFloat(movie.IMDB_Rating) >= 7);
+    console.log(filteredMovies);
+
+    // Creating row div start
+    const rowDiv = `
+        <div class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Rating Between 7-8</h2>
+            </div>`;
+    displayThis = displayThis + rowDiv;
+
+    // Loop through filtered movies
+    filteredMovies.slice(0, 10).forEach(movie => {
+        const movieIndex = movieData.findIndex(m => m === movie); // Find index of movie in movieData
+        if (movieIndex !== -1) {
+            displayThis += displayThisMovie(movieIndex); // Pass index to displayThisMovie
+        }
+    });
+
+    // Creating row div end
+    const rowEnd = `</div>`;
+    displayThis += rowEnd;
+
+    // Displaying movies
+    document.getElementById("output").insertAdjacentHTML("beforebegin", displayThis);
+}
+
+function displayUARow() {
+    let displayThis = '';
+
+    // Filter movies based on genre
+    const filteredMovies = movieData.filter(movie => movie.Certificate == 'UA');
+    console.log(filteredMovies);
+
+    // Creating row div start
+    const rowDiv = `
+        <div class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Rating of UA</h2>
+            </div>`;
+    displayThis = displayThis + rowDiv;
+
+    // Loop through filtered movies
+    filteredMovies.slice(0, 10).forEach(movie => {
+        const movieIndex = movieData.findIndex(m => m === movie); // Find index of movie in movieData
+        if (movieIndex !== -1) {
+            displayThis += displayThisMovie(movieIndex); // Pass index to displayThisMovie
+        }
+    });
+
+    // Creating row div end
+    const rowEnd = `</div>`;
+    displayThis += rowEnd;
+
+    // Displaying movies
+    document.getElementById("output").insertAdjacentHTML("beforebegin", displayThis);
+}
+
+function displayARow() {
+    let displayThis = '';
+
+    // Filter movies based on genre
+    const filteredMovies = movieData.filter(movie => movie.Certificate == 'A');
+    console.log(filteredMovies);
+
+    // Creating row div start
+    const rowDiv = `
+        <div class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Rating of A</h2>
+            </div>`;
+    displayThis = displayThis + rowDiv;
+
+    // Loop through filtered movies
+    filteredMovies.slice(0, 10).forEach(movie => {
+        const movieIndex = movieData.findIndex(m => m === movie); // Find index of movie in movieData
+        if (movieIndex !== -1) {
+            displayThis += displayThisMovie(movieIndex); // Pass index to displayThisMovie
+        }
+    });
+
+    // Creating row div end
+    const rowEnd = `</div>`;
+    displayThis += rowEnd;
+
+    // Displaying movies
+    document.getElementById("output").insertAdjacentHTML("beforebegin", displayThis);
+}
+
+function displayPG13Row() {
+    let displayThis = '';
+
+    // Filter movies based on genre
+    const filteredMovies = movieData.filter(movie => movie.Certificate == 'PG-13');
+    console.log(filteredMovies);
+
+    // Creating row div start
+    const rowDiv = `
+        <div class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Rating of PG-13</h2>
+            </div>`;
+    displayThis = displayThis + rowDiv;
+
+    // Loop through filtered movies
+    filteredMovies.slice(0, 10).forEach(movie => {
+        const movieIndex = movieData.findIndex(m => m === movie); // Find index of movie in movieData
+        if (movieIndex !== -1) {
+            displayThis += displayThisMovie(movieIndex); // Pass index to displayThisMovie
+        }
+    });
+
+    // Creating row div end
+    const rowEnd = `</div>`;
+    displayThis += rowEnd;
+
+    // Displaying movies
+    document.getElementById("output").insertAdjacentHTML("beforebegin", displayThis);
+}
+
+function displayRRow() {
+    let displayThis = '';
+
+    // Filter movies based on genre
+    const filteredMovies = movieData.filter(movie => movie.Certificate == 'R');
+    console.log(filteredMovies);
+
+    // Creating row div start
+    const rowDiv = `
+        <div class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Rating of R</h2>
+            </div>`;
+    displayThis = displayThis + rowDiv;
+
+    // Loop through filtered movies
+    filteredMovies.slice(0, 10).forEach(movie => {
+        const movieIndex = movieData.findIndex(m => m === movie); // Find index of movie in movieData
+        if (movieIndex !== -1) {
+            displayThis += displayThisMovie(movieIndex); // Pass index to displayThisMovie
+        }
+    });
+
+    // Creating row div end
+    const rowEnd = `</div>`;
+    displayThis += rowEnd;
+
+    // Displaying movies
+    document.getElementById("output").insertAdjacentHTML("beforebegin", displayThis);
+}
+
+function displayURow() {
+    let displayThis = '';
+
+    // Filter movies based on genre
+    const filteredMovies = movieData.filter(movie => movie.Certificate == 'U');
+    console.log(filteredMovies);
+
+    // Creating row div start
+    const rowDiv = `
+        <div class="row card-section">
+            <div class="col-md-12">
+                <h2 class="card-title mb-3 lato-bold">Rating of U</h2>
             </div>`;
     displayThis = displayThis + rowDiv;
 
