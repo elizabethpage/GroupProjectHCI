@@ -9,6 +9,8 @@ var watchedDeleteButtonNum = 1;
 
 var deleteButtonNum = 0;
 
+wantList = 0;
+
 function addToWant(){
     var title = document.getElementById("wantTitle").value
     var content = document.getElementById("wantContent").value 
@@ -32,14 +34,6 @@ function addToWant(){
         </div>`;
 
     document.getElementById("wantRow").insertAdjacentHTML("beforeend", wantCardTemplate);
-
-    function adder(card){
-        for(let i=0;i<card.length;i++){
-            card.push(card[i])
-        }
-        return card
-    }
-    console.log(adder(card))
 }
 
 function addToWatched(){
@@ -222,3 +216,75 @@ function addToList(id){
     document.getElementById(mainID).insertAdjacentHTML("beforeend", cardTemplate);
 
 }
+
+//function that puts button id in and turns info to array
+// function moveToWant(thisID){
+//     //save data
+//     var b = document.getElementById(thisID).previousElementSibling.previousElementSibling.parentElement.previousElementSibling.parentElement;
+//     var cardID = b.getAttribute("id");
+//     var title = document.getElementById(thisID).previousElementSibling.previousElementSibling.innerHTML;
+//     var content = document.getElementById(thisID).previousElementSibling.innerHTML;
+//     var img = document.getElementById(thisID).previousElementSibling.previousElementSibling.parentElement.previousElementSibling.getAttribute("src");
+
+//     wantMoveButtonNum = wantMoveButtonNum + 1;
+//     watchedDeleteButtonNum = watchedDeleteButtonNum + 1;
+
+//     var wantCardTemplate = 
+//         `<div class = "col-md-3">
+//         <div class="card" style="width: 18rem;" id="${cardID}">
+//             <img src="${img}" class="card-img-top" alt="${title}">
+//             <div class="card-body lato-regular">
+//             <h5 class="card-title">${title}</h5>
+//             <p class="card-text">${content}</p>
+//             <button id="wantMoveButton${wantMoveButtonNum}" type="button" class="btn btn-customcolor" onclick="moveToWatched(id)">Move to Watched</button>
+//             <button id="watchedDeleteButton${watchedDeleteButtonNum}" type="button" class="btn btn-customcolor" onclick="deleteButton(id)">Delete</button>
+//             </div>
+//         </div>
+//         </div>`;
+
+//     //add to global array
+//     // wantToWatchList.append(wantCardTemplate);
+//     // return watchedCardTemplate;
+//     var globalNum = localStorage.get('globalWantNum');
+
+//     localStorage.setItem(globalNum, wantCardTemplate);
+//     console.log(localStorage.getItem(globalNum));
+//     globalNum = globalNum + 1;
+//     localStorage.setItem('globalWantNum', globalNum);
+// }
+
+// function loadWatchList(){
+//     var i = 0;
+//     var globalNum = localStorage.getItem('globalWantNum');
+//     while(i <= globalNum){
+//         document.getElementById("wantRow").insertAdjacentHTML("beforeend", localStorage.getItem(i));
+//         i = i + 1;
+//     }
+//     console.log()
+
+// }
+// //adds to global array
+
+// //function that grabs elements from array (body onload) and loads it to want to watch list
+
+// var globalwantListNum = localStorage.getItem('globalwantList');
+//     if (globalwantList == null){
+//         localStorage.setItem('globalwantList', 0)
+//         localStorage.setItem(0, wantCardTemplate);
+//         localStorage.setItem('globalwantList', 1)
+//     }
+//     else {
+//         localStorage.setItem(globalwantListNum, wantCardTemplate);
+//         globalwantList = globalwantList + 1;
+//     }
+// }
+
+// function loadWatchList(){
+//     var i = 0;
+//     var globalwantListNum = localStorage.getItem('globalwantList');
+//     while(i <= globalwantListNum){
+//         document.getElementById("wantRow").insertAdjacentHTML("beforeend", localStorage.getItem(i));
+//         i = i + 1;
+//     }
+
+// }
