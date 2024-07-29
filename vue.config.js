@@ -1,30 +1,38 @@
+
+/*
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
-const HtmlMinifier = require('html-minifier');
+
+const pages = {
+  index: {
+    entry: 'src/main.js',
+    template: path.resolve(__dirname, 'HomePage.html'),
+    filename: 'HomePage.html',
+    title: 'Home Page'
+  },
+  movies: {
+    entry: 'src/main.js',
+    template: path.resolve(__dirname, 'Movies.html'),
+    filename: 'Movies.html',
+    title: 'Movies'
+  },
+  categories: {
+    entry: 'src/main.js',
+    template: path.resolve(__dirname, 'Categories.html'),
+    filename: 'Categories.html',
+    title: 'Categories'
+  },
+  profile: {
+    entry: 'src/main.js',
+    template: path.resolve(__dirname, 'Profile.html'),
+    filename: 'Profile.html',
+    title: 'Profile'
+  }
+};
 
 module.exports = {
-  pages: {
-    index: {
-      entry: 'src/main.js',
-      template: 'HomePage.html',
-      filename: 'HomePage.html'
-    },
-    movies: {
-      entry: 'src/main.js',
-      template: 'Movies.html',
-      filename: 'Movies.html'
-    },
-    categories: {
-      entry: 'src/main.js',
-      template: 'Categories.html',
-      filename: 'Categories.html'
-    },
-    profile: {
-      entry: 'src/main.js',
-      template: 'Profile.html',
-      filename: 'Profile.html'
-    }
-  },
+  pages,
   outputDir: 'dist',
   assetsDir: 'assets',
   devServer: {
@@ -38,23 +46,53 @@ module.exports = {
         stream: require.resolve('stream-browserify')
       }
     },
+    plugins: Object.keys(pages).map(page => {
+      return new HtmlWebpackPlugin({
+        filename: pages[page].filename,
+        template: pages[page].template,
+        chunks: [page],
+        title: pages[page].title,
+        minify: false,
+      });
+    }),
+    optimization: {
+      minimizer: [],
+    }
+  }
+}
+
+*/
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+
+module.exports = {
+  pages: {
+    index: {
+      entry: 'src/main.js',
+      template: path.resolve(__dirname, 'HomePage.html'),
+      filename: 'HomePage.html',
+      title: 'Home Page'
+    }
+  },
+  configureWebpack: {
+    resolve: {
+      fallback: {
+        stream: require.resolve('stream-browserify')
+      }
+    },
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'HomePage.html'),
         filename: 'HomePage.html',
-        minify: {
-          collapseWhitespace: true,
-          removeComments: true,
-          removeRedundantAttributes: true,
-          removeScriptTypeAttributes: true,
-          removeStyleLinkTypeAttributes: true,
-          useShortDoctype: true,
-        },
-      }),
+        template: path.resolve(__dirname, 'HomePage.html'),
+        title: 'Home Page'
+      })
     ],
-  },
-};
-
+    optimization: {
+      minimizer: [],
+    }
+  }
+}
 
 
 
