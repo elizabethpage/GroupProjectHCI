@@ -1,39 +1,60 @@
-// vue.config.js
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const HtmlMinifier = require('html-minifier');
+
 module.exports = {
-    pages: {
-      index: {
-        entry: 'js/main.js', // Path to your main JavaScript entry file
-        template: 'HomePage.html', // Path to your main HTML template
-        filename: 'HomePage.html'
-      },
-      movies: {
-        entry: 'js/main.js',
-        template: 'Movies.html',
-        filename: 'Movies.html'
-      },
-      categories: {
-        entry: 'js/main.js',
-        template: 'Categories.html',
-        filename: 'Categories.html'
-      },
-      profile: {
-        entry: 'js/main.js',
-        template: 'Profile.html',
-        filename: 'Profile.html'
-      }
+  pages: {
+    index: {
+      entry: 'src/main.js',
+      template: 'HomePage.html',
+      filename: 'HomePage.html'
     },
-    outputDir: 'dist', // Directory for the production build files
-    assetsDir: 'assets', // Directory for static assets
-    devServer: {
-      port: 8080, // Port for the development server
-      open: true, // Automatically open the browser
-      proxy: 'http://localhost:3000' // Proxy for API requests (if needed)
+    movies: {
+      entry: 'src/main.js',
+      template: 'Movies.html',
+      filename: 'Movies.html'
     },
-    configureWebpack: {
-      resolve: {
-        fallback: {
-          stream: require.resolve('stream-browserify')
-        }
-      }
+    categories: {
+      entry: 'src/main.js',
+      template: 'Categories.html',
+      filename: 'Categories.html'
+    },
+    profile: {
+      entry: 'src/main.js',
+      template: 'Profile.html',
+      filename: 'Profile.html'
     }
-  }
+  },
+  outputDir: 'dist',
+  assetsDir: 'assets',
+  devServer: {
+    port: 8080,
+    open: true,
+    proxy: 'http://localhost:3000'
+  },
+  configureWebpack: {
+    resolve: {
+      fallback: {
+        stream: require.resolve('stream-browserify')
+      }
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, 'HomePage.html'),
+        filename: 'HomePage.html',
+        minify: {
+          collapseWhitespace: true,
+          removeComments: true,
+          removeRedundantAttributes: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          useShortDoctype: true,
+        },
+      }),
+    ],
+  },
+};
+
+
+
+
